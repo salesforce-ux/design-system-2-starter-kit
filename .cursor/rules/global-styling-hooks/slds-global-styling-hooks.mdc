@@ -1,0 +1,128 @@
+---
+description: Complete guide to Salesforce Lightning Design System (SLDS) Global Styling Hooks, organized by category and including all documented tokens
+alwaysApply: false
+---
+# SLDS Global Styling Hooks Reference
+All `--slds-g-*` variables are immutable, centrally managed by Salesforce, and should not be reassigned in component code.
+
+## Color Hooks
+
+### Surface Colors
+- Foundational background layers
+- `--slds-g-color-surface-1`: Primary background surface
+- `--slds-g-color-surface-2`: Elevated or alternate background layer
+
+### Surface Container Colors
+- Containers that sit on top of surfaces (e.g., cards)
+- `--slds-g-color-surface-container-1`: Default container background
+- `--slds-g-color-surface-container-2`: Slightly elevated container
+- `--slds-g-color-surface-container-3`: Higher elevation container
+
+### On-Surface Colors
+- Text/icons placed on surface or container
+- `--slds-g-color-on-surface-1`: Text/icon on surface level 1
+- `--slds-g-color-on-surface-2`: Text/icon on surface level 2
+- `--slds-g-color-on-surface-3`: Text/icon on surface level 3
+
+### Border Colors (Neutral)
+- Visual separation or outline
+- `--slds-g-color-border-1`: Light neutral border for non-interactive elements
+- `--slds-g-color-border-2`: Darker neutral border for interactive elements
+
+### Accent Colors
+- Emphasize elements or actions
+- `--slds-g-color-accent-1`: Primary accent color
+- `--slds-g-color-accent-2`: Alternate accent tone
+- `--slds-g-color-accent-3`: Stronger/darker accent tone
+
+### Accent Container Colors
+- Background containers that hold text/icons on top of accents
+- `--slds-g-color-accent-container-1`: Primary accent container
+- `--slds-g-color-accent-container-2`: Alternate accent container
+- `--slds-g-color-accent-container-3`: High-emphasis accent container
+
+### On-Accent Colors
+- Text/icons that appear on top of an accent container
+- `--slds-g-color-on-accent-1`: Text/icon color on accent container level 1
+
+### Border Accent Colors
+- Borders using brand accent hues
+- `--slds-g-color-border-accent-1`: Light border accent
+- `--slds-g-color-border-accent-2`: Medium border accent
+- `--slds-g-color-border-accent-3`: Strong border accent
+
+### Feedback: Error
+- For errors and alerts
+- `--slds-g-color-error-1`: Text/icon error color
+- `--slds-g-color-error-container-1`: Background error container
+- `--slds-g-color-error-container-2`: Elevated error container
+- `--slds-g-color-on-error-1`: Text/icon on error background
+- `--slds-g-color-border-error-1`: Border for subtle error indication
+- `--slds-g-color-border-error-2`: Border for interactive error components
+
+### Feedback: Success
+- `--slds-g-color-success-1`: Text/icon success color
+- `--slds-g-color-success-container-1`: Success container
+- `--slds-g-color-success-container-2`: Elevated success container
+- `--slds-g-color-on-success-1`: Text/icon on success container
+- `--slds-g-color-on-success-2`: Alternate text/icon on success
+- `--slds-g-color-border-success-1`: Border for success messaging
+
+### Feedback: Warning
+- `--slds-g-color-warning-1`: Warning foreground color
+- `--slds-g-color-warning-container-1`: Background warning container
+- `--slds-g-color-on-warning-1`: Text/icon color for warning
+- `--slds-g-color-border-warning-1`: Border color for warning indication
+
+### Feedback: Info
+- `--slds-g-color-info-1`: Informational text/icon
+- `--slds-g-color-info-container-1`: Info background
+- `--slds-g-color-on-info-1`: Info text/icon on background
+
+### Feedback: Disabled
+- `--slds-g-color-disabled-1`: Text/icon disabled
+- `--slds-g-color-disabled-2`: Subtle disabled state
+- `--slds-g-color-disabled-container-1`: Disabled background
+- `--slds-g-color-disabled-container-2`: Alternate disabled container
+- `--slds-g-color-on-disabled-1`: Text/icon on disabled container
+- `--slds-g-color-on-disabled-2`: Alternate disabled-on color
+- `--slds-g-color-border-disabled-1`: Subtle border for disabled
+- `--slds-g-color-border-disabled-2`: Stronger border for disabled
+
+## Typography
+
+### Font Size
+- Scaled sizes based on `--slds-g-font-size-base`
+- `--slds-g-font-scale-neg-2` through `--slds-g-font-scale-neg-1` (or as defined)
+- `--slds-g-font-size-base`: Application’s base font size
+- `--slds-g-font-scale-1` through `--slds-g-font-scale-8` (or as defined)
+
+### Font Weight
+- Define text emphasis
+- `--slds-g-font-weight-1` through `--slds-g-font-weight-7` (e.g., light to bold)
+- `--slds-g-font-weight-4`: Normal weight
+
+### Line Height
+- Unitless multiplier of font-size
+- `--slds-g-line-height-1` through `--slds-g-line-height-6`
+
+## Spacing & Sizing
+
+### Spacing
+- Layout spacing like margin and padding
+- `--slds-g-spacing-1` through `--slds-g-spacing-12`: Modular 4-based scale
+
+### Sizing
+- Height/width units relative to font-size or rems
+- `--slds-g-sizing-1` through `--slds-g-sizing-12`
+
+## Border Widths
+- `--slds-g-sizing-border-1`: 1px border
+- `--slds-g-sizing-border-2`: 2px border
+- `--slds-g-sizing-border-3`: 3px border
+- `--slds-g-sizing-border-4`: 4px border
+
+- --slds-g-sizing-border-1: 1px border.
+- --slds-g-sizing-border-2: 2px border.
+- --slds-g-sizing-border-3: 3px border.
+- --slds-g-sizing-border-4: 4px border.

@@ -1,0 +1,181 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--slds-g-font-family-base);
+  font-size: 100%;
+  line-height: var(--slds-g-font-lineheight-var-base);
+  background: var(--slds-g-color-surface-2);
+  color: var(--slds-g-color-on-surface-3);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-size: var(--slds-g-font-size-base, 0.8125rem);
+  background: transparent;
+}
+
+::placeholder {
+  color: var(--slds-g-color-on-surface-1);
+  font-weight: var(--slds-g-font-weight-4);
+  opacity: 1;
+}
+
+::selection {
+  background: var(--slds-g-color-brand-base-90);
+  text-shadow: none;
+  color: var(--slds-g-color-brand-base-15);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul,
+dl,
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+dd,
+figure {
+  margin: 0;
+}
+
+abbr[title] {
+  text-decoration: none;
+  border: 0;
+  cursor: help;
+}
+
+fieldset {
+  border: 0;
+}
+
+hr {
+  border: 0;
+  padding: 0;
+  display: block;
+  margin-block: var(--slds-g-spacing-6);
+  margin-inline: 0;
+  border-block-start: 1px solid var(--slds-g-color-border-1);
+  height: 1px;
+  clear: both;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: 1em;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  color: var(--slds-s-link-color);
+  text-decoration: none;
+  transition: color 0.1s linear;
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: underline;
+    color: var(--slds-s-link-color-hover);
+  }
+
+  &:active {
+    color: var(--slds-s-link-color-active);
+  }
+
+  &:focus-visible {
+    outline-color: var(--slds-s-link-outline-color);
+  }
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+button {
+  padding: 0;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font: inherit;
+}
+
+b,
+strong,
+dfn {
+  font-weight: var(--slds-g-font-weight-7);
+}
+
+mark {
+  background-color: var(--slds-g-color-palette-yellow-90);
+  color: var(--slds-g-color-neutral-base-10);
+}
+
+input[type='search'] {
+  box-sizing: border-box;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption,
+th,
+td {
+  text-align: left;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}

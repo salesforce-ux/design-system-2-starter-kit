@@ -1,0 +1,30 @@
+/**
+ * @summary Forces the browser to use only light mode.
+ * @description Applies the light color scheme to elements with this class
+ * and to the entire HTML document when the body has this class
+ */
+.slds-color-scheme--light,
+html:has(body.slds-color-scheme--light) {
+  color-scheme: only light;
+}
+
+/**
+ * @summary Forces the browser to use only dark mode.
+ * @description Applies the dark color scheme to elements with this class
+ * and to the entire HTML document when the body has this class
+ */
+.slds-color-scheme--dark,
+html:has(body.slds-color-scheme--dark) {
+  color-scheme: only dark;
+}
+
+/**
+ * @summary Allows the browser to use system preference for color scheme.
+ * @description Enables automatic switching between light and dark modes
+ * based on user's system preferences for elements with this class
+ * and the entire HTML document when the body has this class
+ */
+.slds-color-scheme--system,
+html:has(body.slds-color-scheme--system) {
+  color-scheme: light dark;
+}

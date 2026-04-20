@@ -1,0 +1,143 @@
+# Understand the SLDS color system
+
+The Salesforce Lightning Design System (SLDS) color system gives you a flexible framework for building consistent and beautiful designs across your products. It includes derived color values for primary key colors and UI "surfaces," as well as explicit color values.
+
+Styling hooks manage visual styles. In Figma, styling hooks appear as variables and are applied through style properties. In code, styling hooks are expressed as CSS variables. We organize and name styling hooks so you can quickly understand where and how to use them.
+
+## Categories
+
+| Category                | Description                                                                 |
+|------------------------|-----------------------------------------------------------------------------|
+| color, fill             | The default base color value.                                                |
+| surface                 | Applied only to the background of pages or bottom layers of specific elements.|
+| surface-container       | Applied only to the background of elements that sit on top of a surface, and contain other UI elements or artifacts, such as text or icons. |
+| on-surface, on-feedback, on-accent | Applied to the content (text or icons) that sits on top of a surface or a surface container such as a button. |
+| border                  | Used for borders around containers, strokes, or divider lines.               |
+
+## Surface
+A surface is a canvas that UI elements sit on. Surface colors express the visual stacking context of an app. Surface colors work together to enable sweeping changes, like dark mode.
+
+Surface colors are reserved for the bottom layer of a surface. These elements are surfaces:
+- Application background
+- Panels
+- Modals
+- Docked containers
+- Popovers
+
+Anything that comes into the application's view and has a higher stacking context than a previous surface ultimately establishes a new surface.
+
+**Note:** Don't apply any decoration, brand bands, or textures to an application background.
+
+## Surface-container
+Surface container colors are reserved for the elements that sit on top of a surface and contain other UI elements or artifacts, such as text or icons. These elements are surface containers:
+- Cards or containers
+- Buttons
+- Button icons
+- Tabsets
+
+One of the clearest signals that something is a surface container is if it contains text or icons.
+
+**WCAG 2.1 color contrast requirements:**
+To ensure proper WCAG 2.1 color contrast requirements, pair the text that sits on top of a surface with an `on` surface value. It's valid to use any of the accent or feedback colors that are used for text or icons on top of a surface color, for example, `--slds-g-color-accent-1`.
+
+## On-Surface
+Use the `on-surface` color value for text or icons that appear on top of a surface or surface container. This practice ensures that your content meets the color contrast requirements set by the Web Content Accessibility Guidelines (WCAG) 2.1.
+
+For example, if a surface container is `--slds-g-color-surface-container-3` it will use `--slds-g-color-on-surface-3` for the text on it.
+
+**Note:** Text links (`--slds-g-color-accent-2`), disabled text (`--slds-g-color-on-disabled-2`), and feedback text colors (`--slds-g-color-on-error-1`) are available and can be found in those sections.
+
+## Borders
+Used for borders around containers, strokes, or divider lines. There are two border colors available on light and dark backgrounds.
+
+**WCAG 2.1 color contrast requirements:**
+For compliance with WCAG 2.1 color contrast guidelines, if your component is an interactive element like a `button` or `input`, use `--slds-g-color-border-2`. If your component is a non-interactive, presentational element like a divider line, use `--slds-g-color-border-1`.
+
+## Feedback
+Feedback or alert colors provide visual feedback to the user regarding the status of an action or event. These colors are intentionally reserved to convey specific associations throughout the Salesforce UI.
+
+| Color   | Meaning                                      |
+|---------|----------------------------------------------|
+| Error   | An error that needs to be addressed before progressing |
+| Warning | A warning of potential issues the user needs to be aware of |
+| Success | A positive or successful action or outcome   |
+| Info    | Convey non-critical information to users     |
+| Disabled| Indicates that a component is unavailable    |
+
+**Note:** Only use feedback colors for their intended meaning so users have clear color associations throughout all of Salesforce products.
+
+## Accent
+Accent colors express a brand's accent color throughout the user interface or to draw attention to an action.
+
+Brand colors highlight actions on the page through buttons and links.
+- **accent-1, 2, and 3** are used for color fills like text or icons
+- **accent-container-1, 2, and 3** are for containers such as the brand buttons and hover and active states
+- **border-accent-1, 2, and 3** are reserved for button outlines
+- **brand-base-90 and 80** are used for backgrounds and hover states for menu type components using the brand-base styling hooks
+
+Accents can be used when no text or icon is on top of the accent color. Typically, accents are used to draw attention to something, and as a text color to indicate that an element is active or selected.
+
+These elements can use accent colors:
+- Links
+- Icons
+
+**Note:** `electric blue-50`, `electric blue-40`, and `electric blue-30` are reserved for buttons, hover states, and selected or active states. Do not use them for decorative purposes.
+
+### Border
+The border accent color is reserved for adding borders or outlines that render the brand's accent color. You can use this independently or pair it with an accent container color.
+
+## Do's and Don'ts
+- **Do:** Always use an on color with a container color to ensure WCAG 2.1 color contrast requirements.
+- **Don't:** Do not use system colors or colors from another group like surface colors in combination with accent containers.
+- **Do:** Feel free to use accent/feedback colors to express your brand's accent or intent on top of surface and surface container colors only.
+- **Don't:** Do not use accent/feedback colors if text or icons sit on top of the accent color. To ensure correct WCAG 2.1 color contrast, use accent/feedback container color for this scenario.
+- **Do:** Always use the appropriate border color for borders or outlines, if necessary.
+- **Don't:** Do not use non-border accent colors on borders to achieve a border with an accent color.
+
+---
+
+# Semantic Styling Hooks
+
+## Surface Colors
+Used for backgrounds and large areas of the application that express a new visual stacking context to create visual depth.
+
+- `--slds-g-color-surface-1`: #FFFFFF / rgb(255, 255, 255) / hsl(0, 0%, 100%)
+- `--slds-g-color-surface-2`: #F3F3F3 / rgb(243, 243, 243) / hsl(0, 0%, 95.3%)
+- `--slds-g-color-surface-3`: #F3F3F3 / rgb(243, 243, 243) / hsl(0, 0%, 95.3%)
+- `--slds-g-color-surface-inverse-1`: #032D60 / rgb(3, 45, 96) / hsl(212.9, 93.9%, 19.4%)
+- `--slds-g-color-surface-inverse-2`: #03234D / rgb(3, 35, 77) / hsl(214.1, 92.5%, 15.7%)
+
+## On Surface
+- `--slds-g-color-on-surface-1`: #5C5C5C / rgb(92, 92, 92) / hsl(0, 0%, 36.1%)
+- `--slds-g-color-on-surface-2`: #2E2E2E / rgb(46, 46, 46) / hsl(0, 0%, 18%)
+- `--slds-g-color-on-surface-3`: #03234D / rgb(3, 35, 77) / hsl(214.1, 92.5%, 15.7%)
+- `--slds-g-color-on-surface-inverse-1`: #FFFFFF / rgb(255, 255, 255) / hsl(0, 0%, 100%)
+- `--slds-g-color-on-surface-inverse-2`: #A8CBFF / rgb(168, 203, 255) / hsl(215.9, 100%, 82.9%)
+
+## Container
+- `--slds-g-color-surface-container-1`: #FFFFFF / rgb(255, 255, 255) / hsl(0, 0%, 100%)
+- `--slds-g-color-surface-container-2`: #F3F3F3 / rgb(243, 243, 243) / hsl(0, 0%, 95.3%)
+- `--slds-g-color-surface-container-3`: #E5E5E5 / rgb(229, 229, 229) / hsl(0, 0%, 89.8%)
+- `--slds-g-color-surface-container-inverse-1`: #032D60 / rgb(3, 45, 96) / hsl(212.9, 93.9%, 19.4%)
+- `--slds-g-color-surface-container-inverse-2`: #03234D / rgb(3, 35, 77) / hsl(214.1, 92.5%, 15.7%)
+
+## Accent Colors
+Accent colors, typically brand colors, to emphasize areas that you want to draw attention to.
+
+- `--slds-g-color-accent-1`: #066AFE / rgb(6, 106, 254) / hsl(215.8, 99.2%, 51%)
+- `--slds-g-color-accent-2`: #0250D9 / rgb(2, 80, 217) / hsl(218.2, 73.9%, 42.9%)
+- `--slds-g-color-accent-3`: #022AC0 / rgb(2, 42, 192) / hsl(227.4, 60.1%, 38%)
+- `--slds-g-color-accent-container-1`: #066AFE / rgb(6, 106, 254) / hsl(215.8, 99.2%, 51%)
+- `--slds-g-color-accent-container-2`: #0250D9 / rgb(2, 80, 217) / hsl(218.2, 73.9%, 42.9%)
+- `--slds-g-color-accent-container-3`: #022AC0 / rgb(2, 42, 192) / hsl(227.4, 60.1%, 38%)
+- `--slds-g-color-border-accent-1`: #066AFE / rgb(6, 106, 254) / hsl(215.8, 99.2%, 51%)
+- `--slds-g-color-border-accent-2`: #0250D9 / rgb(2, 80, 217) / hsl(218.2, 73.9%, 42.9%)
+- `--slds-g-color-border-accent-3`: #022AC0 / rgb(2, 42, 192) / hsl(227.4, 60.1%, 38%)
+- `--slds-g-color-on-accent-1`: #FFFFFF / rgb(255, 255, 255) / hsl(0, 0%, 100%)
+- `--slds-g-color-on-accent-2`: #FFFFFF / rgb(255, 255, 255) / hsl(0, 0%, 100%)
+- `--slds-g-color-on-accent-3`: #FFFFFF / rgb(255, 255, 255) / hsl(0, 0%, 100%)
+#FFFFFFrgb(255, 255, 255)hsl(0, 0%, 100%)
+
+--slds-g-color-on-accent-3
+
+#FFFFFFrgb(255, 255, 255)hsl(0, 0%, 100%)

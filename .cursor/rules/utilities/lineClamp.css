@@ -1,0 +1,59 @@
+/**
+ * @summary Sets default line clamp of 3 lines for multi-line truncation, can be altered by a token
+ */
+.slds-line-clamp {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  text-overflow: ellipsis;
+  white-space: pre-line;
+}
+
+/**
+ * @summary Sets line clamp for x-small multi-line truncation
+ */
+.slds-line-clamp_x-small {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  white-space: pre-line;
+}
+
+/**
+ * @summary Sets line clamp for small multi-line truncation
+ */
+.slds-line-clamp_small {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  text-overflow: ellipsis;
+  white-space: pre-line;
+}
+
+/**
+ * @summary Sets line clamp for medium multi-line truncation
+ */
+.slds-line-clamp_medium {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  text-overflow: ellipsis;
+  white-space: pre-line;
+}
+
+/**
+ * @summary Sets line clamp for large multi-line truncation
+ */
+.slds-line-clamp_large {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 7;
+  text-overflow: ellipsis;
+  white-space: pre-line;
+}

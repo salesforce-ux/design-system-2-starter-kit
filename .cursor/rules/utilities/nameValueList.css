@@ -1,0 +1,42 @@
+.slds-list_horizontal {
+  /**
+   * @summary Label of the name-value pair variant. Layout is modified by its parent class.
+   */
+  .slds-item_label {
+    width: 30%;
+    padding-inline-end: var(--slds-g-spacing-3);
+  }
+
+  /**
+   * @summary Label of the name-value pair variant. Layout is modified by its parent class.
+   */
+  .slds-item_detail {
+    width: 70%;
+  }
+}
+
+.slds-list_vertical {
+  .slds-item_label,
+  .slds-item_detail {
+    display: block;
+  }
+}
+
+.slds-list_inline {
+  display: inline-flex;
+  max-width: 100%;
+
+  .slds-item_label {
+    max-width: 180px;
+    padding-inline-end: var(--slds-g-spacing-3);
+    flex-shrink: 0;
+
+    ~ .slds-item_label {
+      padding-inline-start: var(--slds-g-spacing-4);
+    }
+  }
+
+  .slds-item_detail {
+    min-width: 0;
+  }
+}

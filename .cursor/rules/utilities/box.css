@@ -1,0 +1,274 @@
+/**
+ * @summary Provides 1rem base padding and borders
+ */
+.slds-box {
+  padding: var(--slds-g-spacing-4);
+  border-radius: var(--slds-g-radius-border-2);
+  border: var(--slds-g-sizing-border-1) solid var(--slds-g-color-border-1);
+}
+
+/**
+  * @summary Changes padding to .25rem
+  */
+.slds-box_xx-small {
+  padding: var(--slds-g-spacing-1);
+}
+
+/**
+  * @summary Changes padding to .5rem
+  */
+.slds-box_x-small {
+  padding: var(--slds-g-spacing-2);
+}
+
+/**
+  * @summary Changes padding to .75rem
+  */
+.slds-box_small {
+  padding: var(--slds-g-spacing-3);
+}
+
+/**
+ * @summary Handles interactions if the box is applied to an actionable element
+ */
+.slds-box_link {
+  &,
+  &:active,
+  &:focus,
+  &:hover {
+    color: inherit;
+    text-decoration: inherit;
+  }
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    outline: 0;
+    border: var(--slds-g-sizing-border-1) solid var(--slds-g-color-border-accent-2);
+    box-shadow: 0 0 0 1px var(--slds-g-color-accent-1) inset;
+  }
+}
+
+.slds-theme_default {
+  background-color: var(--slds-g-color-surface-container-1);
+  color: var(--slds-g-color-on-surface-3);
+}
+.slds-theme_shade {
+  background-color: var(--slds-g-color-surface-container-2);
+}
+.slds-theme_inverse {
+  color: var(--slds-g-color-neutral-base-100);
+  background-color: var(--slds-g-color-brand-base-10);
+  border-color: var(--slds-g-color-brand-base-10);
+}
+.slds-theme_inverse a:not(.slds-button_neutral) {
+  color: var(--slds-g-color-neutral-base-100);
+  text-decoration: underline;
+}
+.slds-theme_inverse a:not(.slds-button_neutral):link,
+.slds-theme_inverse a:not(.slds-button_neutral):visited {
+  color: var(--slds-g-color-neutral-base-100);
+}
+.slds-theme_inverse a:not(.slds-button_neutral):hover,
+.slds-theme_inverse a:not(.slds-button_neutral):focus {
+  text-decoration: none;
+}
+.slds-theme_inverse a:not(.slds-button_neutral):active {
+  color: rgba(255, 255, 255, 0.5);
+}
+.slds-theme_inverse a:not(.slds-button_neutral)[disabled] {
+  color: rgba(255, 255, 255, 0.15);
+}
+.slds-theme_alt-inverse {
+  color: var(--slds-g-color-neutral-base-100);
+  background-color: var(--slds-g-color-brand-base-20);
+  border-color: var(--slds-g-color-brand-base-20);
+}
+.slds-theme_alt-inverse a:not(.slds-button_neutral) {
+  color: var(--slds-g-color-neutral-base-100);
+  text-decoration: underline;
+}
+.slds-theme_alt-inverse a:not(.slds-button_neutral):link,
+.slds-theme_alt-inverse a:not(.slds-button_neutral):visited {
+  color: var(--slds-g-color-neutral-base-100);
+}
+.slds-theme_alt-inverse a:not(.slds-button_neutral):hover,
+.slds-theme_alt-inverse a:not(.slds-button_neutral):focus {
+  text-decoration: none;
+}
+.slds-theme_alt-inverse a:not(.slds-button_neutral):active {
+  color: rgba(255, 255, 255, 0.5);
+}
+.slds-theme_alt-inverse a:not(.slds-button_neutral)[disabled] {
+  color: rgba(255, 255, 255, 0.15);
+}
+
+.slds-theme_success {
+  color: var(--slds-g-color-on-success-1);
+  background-color: var(--slds-g-color-success-container-1);
+}
+.slds-theme_success a:not(.slds-button_neutral) {
+  color: var(--slds-g-color-on-success-1);
+  text-decoration: underline;
+}
+.slds-theme_success a:not(.slds-button_neutral):link,
+.slds-theme_success a:not(.slds-button_neutral):visited {
+  color: var(--slds-g-color-on-success-1);
+}
+.slds-theme_success a:not(.slds-button_neutral):hover,
+.slds-theme_success a:not(.slds-button_neutral):focus {
+  text-decoration: none;
+}
+.slds-theme_success a:not(.slds-button_neutral):active {
+  color: var(--slds-g-color-on-success-1);
+}
+.slds-theme_success a:not(.slds-button_neutral)[disabled] {
+  color: rgba(255, 255, 255, 0.15);
+}
+.slds-theme_success .slds-icon,
+.slds-theme_success .slds-button__icon {
+  fill: var(--slds-g-color-on-success-1);
+}
+
+.slds-theme_info {
+  color: var(--slds-g-color-on-info-1);
+  background-color: var(--slds-g-color-info-container-1);
+}
+.slds-theme_info a:not(.slds-button_neutral) {
+  color: var(--slds-g-color-on-info-1);
+  text-decoration: underline;
+}
+.slds-theme_info a:not(.slds-button_neutral):link,
+.slds-theme_info a:not(.slds-button_neutral):visited {
+  color: var(--slds-g-color-on-info-1);
+}
+.slds-theme_info a:not(.slds-button_neutral):hover,
+.slds-theme_info a:not(.slds-button_neutral):focus {
+  text-decoration: none;
+}
+.slds-theme_info a:not(.slds-button_neutral):active {
+  color: var(--slds-g-color-on-info-1);
+}
+.slds-theme_info a:not(.slds-button_neutral)[disabled] {
+  color: rgba(255, 255, 255, 0.15);
+}
+.slds-theme_info .slds-icon,
+.slds-theme_info .slds-button__icon {
+  fill: var(--slds-g-color-on-info-1);
+}
+
+.slds-theme_warning {
+  background-color: var(--slds-g-color-warning-container-1);
+  color: var(--slds-g-color-on-warning-1);
+}
+.slds-theme_warning a {
+  color: var(--slds-g-color-on-warning-1);
+  text-decoration: underline;
+}
+.slds-theme_warning a:link,
+.slds-theme_warning a:visited {
+  color: var(--slds-g-color-on-warning-1);
+}
+.slds-theme_warning a:hover,
+.slds-theme_warning a:focus {
+  text-decoration: none;
+}
+.slds-theme_warning a:focus-visible {
+  outline-offset: 2px;
+}
+.slds-theme_warning a:active {
+  color: var(--slds-g-color-on-warning-1);
+}
+.slds-theme_warning a[disabled] {
+  color: var(--slds-g-color-neutral-base-30, #514f4d);
+}
+.slds-theme_warning button {
+  color: var(--slds-g-color-neutral-base-30, #514f4d);
+  text-decoration: underline;
+}
+.slds-theme_warning button:hover {
+  color: var(--slds-g-color-neutral-base-50, #706e6b);
+}
+.slds-theme_warning button:focus {
+  color: var(--slds-g-color-neutral-base-30, #514f4d);
+  box-shadow: var(--slds-g-shadow-outset-focus-1);
+}
+.slds-theme_warning button:active {
+  color: var(--slds-g-color-neutral-base-50, #706e6b);
+}
+.slds-theme_warning .slds-icon,
+.slds-theme_warning .slds-button__icon {
+  fill: var(--slds-g-color-on-warning-1);
+}
+
+.slds-theme_error {
+  color: var(--slds-g-color-on-error-1);
+  background-color: var(--slds-g-color-error-container-1);
+}
+.slds-theme_error a:not(.slds-button_neutral) {
+  color: var(--slds-g-color-on-error-1);
+  text-decoration: underline;
+}
+.slds-theme_error a:not(.slds-button_neutral):link,
+.slds-theme_error a:not(.slds-button_neutral):visited {
+  color: var(--slds-g-color-on-error-1);
+}
+.slds-theme_error a:not(.slds-button_neutral):hover,
+.slds-theme_error a:not(.slds-button_neutral):focus {
+  text-decoration: none;
+}
+.slds-theme_error a:not(.slds-button_neutral):active {
+  color: var(--slds-g-color-on-error-1);
+}
+.slds-theme_error a:not(.slds-button_neutral)[disabled] {
+  color: rgba(255, 255, 255, 0.15);
+}
+.slds-theme_error .slds-icon,
+.slds-theme_error .slds-button__icon {
+  fill: var(--slds-g-color-on-error-1);
+}
+
+.slds-theme_offline {
+  color: var(--slds-g-color-neutral-base-100);
+  background-color: var(--slds-g-color-neutral-base-30);
+}
+.slds-theme_offline a:not(.slds-button_neutral) {
+  color: var(--slds-g-color-neutral-base-100);
+  text-decoration: underline;
+}
+.slds-theme_offline a:not(.slds-button_neutral):link,
+.slds-theme_offline a:not(.slds-button_neutral):visited {
+  color: var(--slds-g-color-neutral-base-100);
+}
+.slds-theme_offline a:not(.slds-button_neutral):hover,
+.slds-theme_offline a:not(.slds-button_neutral):focus {
+  text-decoration: none;
+}
+.slds-theme_offline a:not(.slds-button_neutral):active {
+  color: color-mix(in oklab, var(--slds-g-color-neutral-base-100), transparent 50%);
+}
+.slds-theme_offline a:not(.slds-button_neutral)[disabled] {
+  color: color-mix(in oklab, var(--slds-g-color-neutral-base-100), transparent 10%);
+}
+
+.slds-theme_inverse-text {
+  color: var(--slds-g-color-neutral-base-100);
+}
+.slds-theme_inverse-text a:not(.slds-button_neutral) {
+  color: var(--slds-g-color-neutral-base-100);
+  text-decoration: underline;
+}
+.slds-theme_inverse-text a:not(.slds-button_neutral):link,
+.slds-theme_inverse-text a:not(.slds-button_neutral):visited {
+  color: var(--slds-g-color-neutral-base-100);
+}
+.slds-theme_inverse-text a:not(.slds-button_neutral):hover,
+.slds-theme_inverse-text a:not(.slds-button_neutral):focus {
+  text-decoration: none;
+}
+.slds-theme_inverse-text a:not(.slds-button_neutral):active {
+  color: color-mix(in oklab, var(--slds-g-color-neutral-base-100), transparent 50%);
+}
+.slds-theme_inverse-text a:not(.slds-button_neutral)[disabled] {
+  color: color-mix(in oklab, var(--slds-g-color-neutral-base-100), transparent 15%);
+}

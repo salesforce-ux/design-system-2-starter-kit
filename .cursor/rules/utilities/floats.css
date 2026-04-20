@@ -1,0 +1,33 @@
+/**
+ * @summary Contains floats and stops wrapping of elements following it.
+ */
+.slds-clearfix::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.slds-clear {
+  clear: both;
+}
+
+/**
+ * @summary Pulls element from document flow and floats left. Text and other elements wrap around it.
+ */
+.slds-float_left {
+  float: inline-start;
+}
+
+/**
+ * @summary Removes float from an element that has attribute already
+ */
+.slds-float_none {
+  float: none;
+}
+
+/**
+ * @summary Pulls element from document flow and floats right. Text and other elements wrap around it.
+ */
+.slds-float_right {
+  float: inline-end;
+}

@@ -1,0 +1,27 @@
+/**
+ * @summary Adds a bottom border to an element
+ */
+.slds-border_bottom {
+  border-block-end: var(--slds-g-sizing-border-1) solid var(--slds-g-color-border-1);
+}
+
+/**
+ * @summary Adds a left border to an element
+ */
+.slds-border_left {
+  border-inline-start: var(--slds-g-sizing-border-1) solid var(--slds-g-color-border-1);
+}
+
+/**
+ * @summary Adds a right border to an element
+ */
+.slds-border_right {
+  border-inline-end: var(--slds-g-sizing-border-1) solid var(--slds-g-color-border-1);
+}
+
+/**
+ * @summary Adds a top border to an element
+ */
+.slds-border_top {
+  border-block-start: var(--slds-g-sizing-border-1) solid var(--slds-g-color-border-1);
+}

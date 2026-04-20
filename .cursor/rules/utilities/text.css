@@ -1,0 +1,204 @@
+/**
+ * @summary Creates the 13px regular body copy
+ */
+.slds-text-body_regular {
+  font-size: var(--slds-g-font-size-base);
+}
+
+/**
+  * @summary Creates a more pale-colored 12px copy
+  */
+.slds-text-body_small {
+  font-size: var(--slds-g-font-scale-neg-1);
+}
+
+/**
+  * @summary Very large 28px heading
+  */
+.slds-text-heading_large {
+  font-size: var(--slds-g-font-scale-6);
+  line-height: var(--slds-g-font-lineheight-2);
+}
+
+/**
+  * @summary Large 20px heading
+  */
+.slds-text-heading_medium {
+  font-size: var(--slds-g-font-scale-4);
+  line-height: var(--slds-g-font-lineheight-2);
+}
+
+/**
+  * @summary Smaller 16px heading
+  */
+.slds-text-heading_small {
+  font-size: var(--slds-g-font-scale-2);
+  line-height: var(--slds-g-font-lineheight-2);
+}
+
+/**
+  * @summary 12px heading that is not all caps
+  */
+.slds-text-title {
+  font-size: var(--slds-g-font-scale-neg-1);
+  line-height: var(--slds-g-font-lineheight-2);
+  color: var(--slds-g-color-on-surface-1);
+}
+
+/**
+  * @summary All caps 12px heading
+  */
+.slds-text-title_caps {
+  font-size: var(--slds-g-font-scale-neg-1);
+  color: var(--slds-g-color-on-surface-1);
+  font-weight: var(--slds-g-font-weight-4);
+  text-transform: uppercase;
+  letter-spacing: 0.0625rem;
+}
+
+/**
+  * @summary Bold 14px heading
+  */
+.slds-text-title_bold {
+  font-size: var(--slds-g-font-scale-neg-1);
+  font-weight: var(--slds-g-font-weight-7);
+}
+
+/**
+  * @summary Resets line-height to browser default
+  */
+.slds-line-height_reset {
+  line-height: 1;
+}
+
+/**
+  * @summary Default color of text
+  */
+.slds-text-color_default {
+  color: var(--slds-g-color-on-surface-3);
+}
+
+/**
+  * @summary Weak color of text
+  */
+.slds-text-color_weak {
+  color: var(--slds-g-color-on-surface-1);
+}
+
+/**
+  * @summary Error color of text
+  */
+.slds-text-color_error {
+  color: var(--slds-g-color-error-1);
+}
+
+/**
+  * @summary Color of text for destructive actions
+  */
+.slds-text-color_destructive {
+  color: var(--slds-g-color-error-1);
+}
+
+/**
+  * @summary Success color of text
+  */
+.slds-text-color_success {
+  color: var(--slds-g-color-success-1);
+}
+
+/**
+  * @summary Default color of text on inversed background
+  */
+.slds-text-color_inverse {
+  color: var(--slds-g-color-neutral-base-100);
+}
+
+/**
+  * @summary Weak color of text on inversed background
+  */
+.slds-text-color_inverse-weak {
+  color: var(--slds-g-color-neutral-base-70);
+}
+
+/**
+  * @summary Aligns text left
+  */
+.slds-text-align_left {
+  text-align: start;
+}
+
+/**
+  * @summary Aligns text center
+  */
+.slds-text-align_center {
+  text-align: center;
+}
+
+/**
+  * @summary Aligns text right
+  */
+.slds-text-align_right {
+  text-align: end;
+}
+
+/**
+  * @summary Adds default spacing and list styling within a wrapper
+  */
+.slds-text-longform {
+  h1,
+  h2,
+  h3,
+  p,
+  ul,
+  ol,
+  dl,
+  img {
+    margin-block-end: var(--slds-g-spacing-4);
+  }
+
+  ul {
+    margin-inline-start: var(--slds-g-spacing-5);
+    list-style: disc;
+
+    ul {
+      list-style: circle;
+
+      ul {
+        list-style: square;
+      }
+    }
+  }
+
+  ol {
+    margin-inline-start: var(--slds-g-spacing-5);
+    list-style: decimal;
+
+    ol {
+      list-style: lower-alpha;
+
+      ol {
+        list-style: lower-roman;
+      }
+    }
+  }
+
+  .slds-video {
+    display: block;
+    max-width: 100%;
+  }
+
+  .slds-video.slds-video_center {
+    margin: 0 auto;
+  }
+
+  .slds-video.slds-video_right {
+    margin: 0 0 0 auto;
+  }
+}
+
+/**
+ * @summary Monospace font family
+ */
+.slds-text-font_monospace {
+  font-family: var(--slds-g-font-family-monospace);
+}

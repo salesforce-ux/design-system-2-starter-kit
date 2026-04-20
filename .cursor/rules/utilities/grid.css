@@ -1,0 +1,739 @@
+/**
+ * @summary Initializes grid
+ */
+.slds-grid {
+  display: flex;
+}
+
+/**
+ * @summary Initializes grid
+ */
+.slds-grid_frame {
+  min-width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/**
+ * @summary Initializes grid
+ */
+.slds-grid_vertical {
+  flex-direction: column;
+}
+
+/**
+ * @summary Initializes grid
+ */
+.slds-grid_vertical-reverse {
+  flex-direction: column-reverse;
+}
+
+/**
+ * @summary Initializes grid
+ */
+.slds-grid_reverse {
+  flex-direction: row-reverse;
+}
+
+/**
+ * @summary Allows columns to wrap when they exceed 100% of their parent’s width
+ */
+.slds-wrap {
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+/**
+ * @summary Keeps columns on one line. Allows columns to stretch and fill 100% of the parent&rsquo;s width and height.
+ */
+.slds-nowrap {
+  flex: 1 1 auto;
+  flex-wrap: nowrap;
+  align-items: stretch;
+}
+
+/**
+ * @summary .slds-{size}-nowrap used for responsive design
+ */
+@media (min-width: 30em) {
+  .slds-nowrap_small {
+    flex: 1 1 auto;
+    flex-wrap: nowrap;
+    align-items: stretch;
+  }
+}
+
+@media (min-width: 48em) {
+  .slds-nowrap_medium {
+    flex: 1 1 auto;
+    flex-wrap: nowrap;
+    align-items: stretch;
+  }
+}
+
+@media (min-width: 64em) {
+  .slds-nowrap_large {
+    flex: 1 1 auto;
+    flex-wrap: nowrap;
+    align-items: stretch;
+  }
+}
+
+/**
+ * @summary Apply 12px gutters to each grid column when you add this class to an `slds-grid` element
+ */
+.slds-gutters {
+  margin-inline-end: calc(var(--slds-g-spacing-3) * -1);
+  margin-inline-start: calc(var(--slds-g-spacing-3) * -1);
+
+  .slds-col {
+    padding-inline-end: var(--slds-g-spacing-3);
+    padding-inline-start: var(--slds-g-spacing-3);
+  }
+}
+
+/**
+ * @summary Apply 2px gutters to each grid column when you add this class to an `slds-grid` element
+ */
+.slds-gutters_xxx-small {
+  margin-inline-end: calc(0.125rem * -1);
+  margin-inline-start: calc(0.125rem * -1);
+
+  .slds-col {
+    padding-inline-end: 0.125rem;
+    padding-inline-start: 0.125rem;
+  }
+}
+
+/**
+ * @summary Apply 4px gutters to each grid column when you add this class to an `slds-grid` element
+ */
+.slds-gutters_xx-small {
+  margin-inline-end: calc(var(--slds-g-spacing-1) * -1);
+  margin-inline-start: calc(var(--slds-g-spacing-1) * -1);
+
+  .slds-col {
+    padding-inline-end: var(--slds-g-spacing-1);
+    padding-inline-start: var(--slds-g-spacing-1);
+  }
+}
+
+/**
+ * @summary Apply 8px gutters to each grid column when you add this class to an `slds-grid` element
+ */
+.slds-gutters_x-small {
+  margin-inline-end: calc(var(--slds-g-spacing-2) * -1);
+  margin-inline-start: calc(var(--slds-g-spacing-2) * -1);
+
+  .slds-col {
+    padding-inline-end: var(--slds-g-spacing-2);
+    padding-inline-start: var(--slds-g-spacing-2);
+  }
+}
+
+/**
+ * @summary Apply 12px gutters to each grid column when you add this class to an `slds-grid` element
+ */
+.slds-gutters_small {
+  margin-inline-end: calc(var(--slds-g-spacing-3) * -1);
+  margin-inline-start: calc(var(--slds-g-spacing-3) * -1);
+
+  .slds-col {
+    padding-inline-end: var(--slds-g-spacing-3);
+    padding-inline-start: var(--slds-g-spacing-3);
+  }
+}
+
+/**
+ * @summary Apply 16px gutters to each grid column when you add this class to an `slds-grid` element
+ */
+.slds-gutters_medium {
+  margin-inline-end: calc(var(--slds-g-spacing-4) * -1);
+  margin-inline-start: calc(var(--slds-g-spacing-4) * -1);
+
+  .slds-col {
+    padding-inline-end: var(--slds-g-spacing-4);
+    padding-inline-start: var(--slds-g-spacing-4);
+  }
+}
+
+/**
+ * @summary Apply 24px gutters to each grid column when you add this class to an `slds-grid` element
+ */
+.slds-gutters_large {
+  margin-inline-end: calc(var(--slds-g-spacing-5) * -1);
+  margin-inline-start: calc(var(--slds-g-spacing-5) * -1);
+
+  .slds-col {
+    padding-inline-end: var(--slds-g-spacing-5);
+    padding-inline-start: var(--slds-g-spacing-5);
+  }
+}
+
+/**
+ * @summary Apply 32px gutters to each grid column when you add this class to an `slds-grid` element
+ */
+.slds-gutters_x-large {
+  margin-inline-end: calc(var(--slds-g-spacing-6) * -1);
+  margin-inline-start: calc(var(--slds-g-spacing-6) * -1);
+
+  .slds-col {
+    padding-inline-end: var(--slds-g-spacing-6);
+    padding-inline-start: var(--slds-g-spacing-6);
+  }
+}
+
+/**
+ * @summary Apply 48px gutters to each grid column when you add this class to an `slds-grid` element
+ */
+.slds-gutters_xx-large {
+  margin-inline-end: calc(var(--slds-g-spacing-8) * -1);
+  margin-inline-start: calc(var(--slds-g-spacing-8) * -1);
+
+  .slds-col {
+    padding-inline-end: var(--slds-g-spacing-8);
+    padding-inline-start: var(--slds-g-spacing-8);
+  }
+}
+
+/**
+ * @summary Apply 12px gutters to only direct column children when you add this class to an `slds-grid` element
+ */
+.slds-gutters_direct {
+  margin-inline-end: calc(var(--slds-g-spacing-3) * -1);
+  margin-inline-start: calc(var(--slds-g-spacing-3) * -1);
+}
+
+.slds-gutters_direct > .slds-col {
+  padding-inline-end: var(--slds-g-spacing-3);
+  padding-inline-start: var(--slds-g-spacing-3);
+}
+
+/**
+ * @summary Apply 2px gutters to only direct column children when you add this class to an `slds-grid` element
+ */
+.slds-gutters_direct-xxx-small {
+  margin-inline-end: calc(0.125rem * -1);
+  margin-inline-start: calc(0.125rem * -1);
+}
+
+.slds-gutters_direct-xxx-small > .slds-col {
+  padding-inline-end: 0.125rem;
+  padding-inline-start: 0.125rem;
+}
+
+/**
+ * @summary Apply 4px gutters to only direct column children when you add this class to an `slds-grid` element
+ */
+.slds-gutters_direct-xx-small {
+  margin-inline-end: calc(var(--slds-g-spacing-1) * -1);
+  margin-inline-start: calc(var(--slds-g-spacing-1) * -1);
+}
+
+.slds-gutters_direct-xx-small > .slds-col {
+  padding-inline-end: var(--slds-g-spacing-1);
+  padding-inline-start: var(--slds-g-spacing-1);
+}
+
+/**
+ * @summary Apply 8px gutters to only direct column children when you add this class to an `slds-grid` element
+ */
+.slds-gutters_direct-x-small {
+  margin-inline-end: calc(var(--slds-g-spacing-2) * -1);
+  margin-inline-start: calc(var(--slds-g-spacing-2) * -1);
+}
+
+.slds-gutters_direct-x-small > .slds-col {
+  padding-inline-end: var(--slds-g-spacing-2);
+  padding-inline-start: var(--slds-g-spacing-2);
+}
+
+/**
+ * @summary Apply 12px gutters to only direct column children when you add this class to an `slds-grid` element
+ */
+.slds-gutters_direct-small {
+  margin-inline-end: calc(var(--slds-g-spacing-3) * -1);
+  margin-inline-start: calc(var(--slds-g-spacing-3) * -1);
+}
+
+.slds-gutters_direct-small > .slds-col {
+  padding-inline-end: var(--slds-g-spacing-3);
+  padding-inline-start: var(--slds-g-spacing-3);
+}
+
+/**
+ * @summary Apply 16px gutters to only direct column children when you add this class to an `slds-grid` element
+ */
+.slds-gutters_direct-medium {
+  margin-inline-end: calc(var(--slds-g-spacing-4) * -1);
+  margin-inline-start: calc(var(--slds-g-spacing-4) * -1);
+}
+
+.slds-gutters_direct-medium > .slds-col {
+  padding-inline-end: var(--slds-g-spacing-4);
+  padding-inline-start: var(--slds-g-spacing-4);
+}
+
+/**
+ * @summary Apply 24px gutters to only direct column children when you add this class to an `slds-grid` element
+ */
+.slds-gutters_direct-large {
+  margin-inline-end: calc(var(--slds-g-spacing-5) * -1);
+  margin-inline-start: calc(var(--slds-g-spacing-5) * -1);
+}
+
+.slds-gutters_direct-large > .slds-col {
+  padding-inline-end: var(--slds-g-spacing-5);
+  padding-inline-start: var(--slds-g-spacing-5);
+}
+
+/**
+ * @summary Apply 32px gutters to only direct column children when you add this class to an `slds-grid` element
+ */
+.slds-gutters_direct-x-large {
+  margin-inline-end: calc(var(--slds-g-spacing-6) * -1);
+  margin-inline-start: calc(var(--slds-g-spacing-6) * -1);
+}
+
+.slds-gutters_direct-x-large > .slds-col {
+  padding-inline-end: var(--slds-g-spacing-6);
+  padding-inline-start: var(--slds-g-spacing-6);
+}
+
+/**
+ * @summary Apply 48px gutters to only direct column children when you add this class to an `slds-grid` element
+ */
+.slds-gutters_direct-xx-large {
+  margin-inline-end: calc(var(--slds-g-spacing-8) * -1);
+  margin-inline-start: calc(var(--slds-g-spacing-8) * -1);
+}
+
+.slds-gutters_direct-xx-large > .slds-col {
+  padding-inline-end: var(--slds-g-spacing-8);
+  padding-inline-start: var(--slds-g-spacing-8);
+}
+
+/**
+ * @summary Normalizes the 0.75rem of padding when nesting a grid in a region with `.slds-p-horizontal_small`
+ */
+.slds-grid_pull-padded {
+  margin-inline-end: calc(var(--slds-g-spacing-3) * -1);
+  margin-inline-start: calc(var(--slds-g-spacing-3) * -1);
+}
+
+/**
+ * @summary Normalizes the 0.125rem of padding when nesting a grid in a region with `.slds-p-horizontal_xxx-small`
+ */
+.slds-grid_pull-padded-xxx-small {
+  margin-inline-end: calc(0.125rem * -1);
+  margin-inline-start: calc(0.125rem * -1);
+}
+
+/**
+ * @summary Normalizes the 0.25rem of padding when nesting a grid in a region with `.slds-p-horizontal_xx-small`
+ */
+.slds-grid_pull-padded-xx-small {
+  margin-inline-end: calc(var(--slds-g-spacing-1) * -1);
+  margin-inline-start: calc(var(--slds-g-spacing-1) * -1);
+}
+
+/**
+ * @summary Normalizes the 0.5rem of padding when nesting a grid in a region with `.slds-p-horizontal_x-small`
+ */
+.slds-grid_pull-padded-x-small {
+  margin-inline-end: calc(var(--slds-g-spacing-2) * -1);
+  margin-inline-start: calc(var(--slds-g-spacing-2) * -1);
+}
+
+/**
+ * @summary Normalizes the 0.75rem of padding when nesting a grid in a region with `.slds-p-horizontal_small`
+ */
+.slds-grid_pull-padded-small {
+  margin-inline-end: calc(var(--slds-g-spacing-3) * -1);
+  margin-inline-start: calc(var(--slds-g-spacing-3) * -1);
+}
+
+/**
+ * @summary Normalizes the 1rem of padding when nesting a grid in a region with `.slds-p-horizontal_medium`
+ */
+.slds-grid_pull-padded-medium {
+  margin-inline-end: calc(var(--slds-g-spacing-4) * -1);
+  margin-inline-start: calc(var(--slds-g-spacing-4) * -1);
+}
+
+/**
+ * @summary Normalizes the 1.5rem of padding when nesting a grid in a region with `.slds-p-horizontal_large`
+ */
+.slds-grid_pull-padded-large {
+  margin-inline-end: calc(var(--slds-g-spacing-5) * -1);
+  margin-inline-start: calc(var(--slds-g-spacing-5) * -1);
+}
+
+/**
+ * @summary Normalizes the 1.5rem of padding when nesting a grid in a region with `.slds-p-horizontal_x-large`
+ */
+.slds-grid_pull-padded-x-large {
+  margin-inline-end: calc(var(--slds-g-spacing-6) * -1);
+  margin-inline-start: calc(var(--slds-g-spacing-6) * -1);
+}
+
+/**
+ * @summary Normalizes the 1.5rem of padding when nesting a grid in a region with `.slds-p-horizontal_xx-large`
+ */
+.slds-grid_pull-padded-xx-large {
+  margin-inline-end: calc(var(--slds-g-spacing-8) * -1);
+  margin-inline-start: calc(var(--slds-g-spacing-8) * -1);
+}
+
+/* All slds-col_padded classes in one string. This is faster for style calculation than `[class*='slds-icon-action-']`. */
+.slds-col,
+.slds-col_padded-around-medium,
+.slds-col_padded-medium,
+.slds-col_padded-around-large,
+.slds-col_padded-large,
+.slds-col_padded-around,
+.slds-col_padded {
+  flex: 1 1 auto;
+}
+
+/**
+ * @summary Initializes a grid column
+ */
+.slds-col {
+  flex: 1 1 auto;
+}
+
+/**
+ * @summary Adds border to top side of column
+ */
+@media (min-width: 64em) {
+  .slds-col_rule-top {
+    border-inline-start: 1px solid var(--slds-g-color-border-1);
+  }
+}
+
+/**
+ * @summary Adds border to right side of column
+ */
+@media (min-width: 64em) {
+  .slds-col_rule-right {
+    border-inline-end: 1px solid var(--slds-g-color-border-1);
+  }
+}
+
+/**
+ * @summary Adds border to bottom side of column
+ */
+@media (min-width: 64em) {
+  .slds-col_rule-bottom {
+    border-block-end: 1px solid var(--slds-g-color-border-1);
+  }
+}
+
+/**
+ * @summary Adds border to left side of column
+ */
+@media (min-width: 64em) {
+  .slds-col_rule-left {
+    border-inline-start: 1px solid var(--slds-g-color-border-1);
+  }
+}
+
+/**
+ * @summary Needed when truncation is nested in a flexible container in a grid
+ */
+.slds-has-flexi-truncate {
+  flex: 1 1 0%;
+  min-width: 0; /* For FFOX and newer browsers */
+}
+
+/**
+ * @summary Removes flexbox from grid column
+ */
+.slds-no-flex {
+  flex: none;
+}
+
+/**
+ * @summary Sets the column to a min-width of 0
+ */
+.slds-no-space {
+  min-width: 0;
+}
+
+/**
+ * @summary Allows column to grow to children&rsquo;s content
+ */
+.slds-grow {
+  flex-grow: 1;
+}
+
+/**
+ * @summary Prevents column from growing to children&rsquo;s content
+ */
+.slds-grow-none {
+  flex-grow: 0;
+}
+
+/**
+ * @summary Allows column to shrink to children's content
+ */
+.slds-shrink {
+  flex-shrink: 1;
+}
+
+/**
+ * @summary Prevents column from shrinking to children's content
+ */
+.slds-shrink-none {
+  flex-shrink: 0;
+}
+
+/* Resets spacing/bullets for when grids are used on unordered lists */
+.slds-text-longform ul.slds-grid {
+  margin-inline-start: 0;
+  list-style: none;
+}
+
+/**
+ * @summary Columns align in the center to the main axis and expand in each direction
+ */
+.slds-grid_align-center {
+  justify-content: center;
+
+  .slds-col,
+  .slds-col_padded-around-medium,
+  .slds-col_padded-medium,
+  .slds-col_padded-around-large,
+  .slds-col_padded-large,
+  .slds-col_padded-around,
+  .slds-col_padded {
+    flex-grow: 0;
+  }
+}
+
+/**
+ * @summary Columns are evenly distributed with equal space around them all
+ */
+.slds-grid_align-space {
+  justify-content: space-around;
+
+  .slds-col,
+  .slds-col_padded-around-medium,
+  .slds-col_padded-medium,
+  .slds-col_padded-around-large,
+  .slds-col_padded-large,
+  .slds-col_padded-around,
+  .slds-col_padded {
+    flex-grow: 0;
+  }
+}
+
+/**
+ * @summary Columns align to the left and right followed by center. Space is equal between them
+ */
+.slds-grid_align-spread {
+  justify-content: space-between;
+
+  .slds-col,
+  .slds-col_padded-around-medium,
+  .slds-col_padded-medium,
+  .slds-col_padded-around-large,
+  .slds-col_padded-large,
+  .slds-col_padded-around,
+  .slds-col_padded {
+    flex-grow: 0;
+  }
+}
+
+/**
+ * @summary Columns start on the opposite end of the grid's main axis
+ */
+.slds-grid_align-end {
+  justify-content: flex-end;
+
+  .slds-col,
+  .slds-col_padded-around-medium,
+  .slds-col_padded-medium,
+  .slds-col_padded-around-large,
+  .slds-col_padded-large,
+  .slds-col_padded-around,
+  .slds-col_padded {
+    flex-grow: 0;
+  }
+}
+
+/**
+ * @summary Columns start at the beginning of the grid's cross axis
+ */
+.slds-grid_vertical-align-start {
+  align-items: flex-start; /* Single Row Alignment */
+  align-content: flex-start; /* Multi Row Alignment */
+}
+
+/**
+ * @summary Columns align in the center to the cross axis and expand it each direction
+ */
+.slds-grid_vertical-align-center {
+  align-items: center; /* Single Row Alignment */
+  align-content: center; /* Multi Row Alignment */
+}
+
+/**
+ * @summary Columns start on the opposite end of the grid's cross axis
+ */
+.slds-grid_vertical-align-end {
+  align-items: flex-end; /* Single Row Alignment */
+  align-content: flex-end; /* Multi Row Alignment */
+}
+
+/**
+ * @summary Vertically aligns element to top of `.slds-grid`
+ */
+.slds-align-top {
+  vertical-align: top;
+  align-self: flex-start;
+}
+
+/**
+ * @summary Vertically aligns element to middle of `.slds-grid`
+ */
+.slds-align-middle {
+  vertical-align: middle;
+  align-self: center;
+}
+
+/**
+ * @summary Vertically aligns element to bottom of `.slds-grid`
+ */
+.slds-align-bottom {
+  vertical-align: bottom;
+  align-self: flex-end;
+}
+
+/**
+ * @summary Bumps grid item(s) away from the other grid items to sit at the top, taking up the remaining white-space of the grid container
+ */
+.slds-col_bump-top {
+  margin-block-start: auto;
+}
+
+/**
+ * @summary Bumps grid item(s) away from the other grid items to sit to the right, taking up the remaining white-space of the grid container
+ */
+.slds-col_bump-right {
+  margin-inline-end: auto;
+}
+
+/**
+ * @summary Bumps grid item(s) away from the other grid items to sit at the bottom, taking up the remaining white-space of the grid container
+ */
+.slds-col_bump-bottom {
+  margin-block-end: auto;
+}
+
+/**
+ * @summary Bumps grid item(s) away from the other grid items to sit to the left, taking up the remaining white-space of the grid container
+ */
+.slds-col_bump-left {
+  margin-inline-start: auto;
+}
+
+/**
+ * @summary Stretch the grid items for both single row and multi-line rows to fill the height of the parent grid container
+ */
+.slds-grid_vertical-stretch {
+  align-items: stretch; /* Single Row Alignment */
+  align-content: stretch; /* Multi Row Alignment */
+}
+
+/**
+ * @summary Restrict width of containers to a maximum of 480px
+ */
+.slds-container_small {
+  max-width: 30rem;
+}
+
+/**
+ * @summary Restrict width of containers to a maximum of 768px
+ */
+.slds-container_medium {
+  max-width: 48rem;
+}
+
+/**
+ * @summary Restrict width of containers to a maximum of 1024px
+ */
+.slds-container_large {
+  max-width: 64rem;
+}
+
+/**
+ * @summary Restrict width of containers to a maximum of 1280px
+ */
+.slds-container_x-large {
+  max-width: 80rem;
+}
+
+/**
+ * @summary Width of container takes up 100% of viewport
+ */
+.slds-container_fluid {
+  width: 100%;
+}
+
+/**
+ * @summary Horizontally positions containers in the center of the viewport
+ */
+.slds-container_center {
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+}
+
+/**
+ * @summary Horizontally positions containers to the left of the viewport
+ */
+.slds-container_left {
+  margin-inline-end: auto;
+}
+
+/**
+ * @summary Horizontally positions containers to the right of the viewport
+ */
+.slds-container_right {
+  margin-inline-start: auto;
+}
+
+.slds-grid_overflow {
+  flex-flow: row nowrap;
+
+  .slds-col {
+    min-width: 11.25em; /* equals 180px */
+    max-width: 22.5em;
+  }
+}
+
+/* These are technically deprecated but adding them to support some layout concerns in prod */
+.slds-col_padded {
+  padding-inline: var(--slds-g-spacing-3);
+}
+
+.slds-col_padded-medium {
+  padding-inline: var(--slds-g-spacing-4);
+}
+
+.slds-col_padded-large {
+  padding-inline: var(--slds-g-spacing-5);
+}
+
+.slds-col_padded-around {
+  padding: var(--slds-g-spacing-3);
+}
+
+.slds-col_padded-around-medium {
+  padding: var(--slds-g-spacing-4);
+}
+
+.slds-col_padded-around-large {
+  padding: var(--slds-g-spacing-5);
+}

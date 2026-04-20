@@ -1,0 +1,27 @@
+/**
+ * @summary Reset positioning back to normal behavior
+ */
+.slds-is-static {
+  position: static;
+}
+
+/**
+ * @summary Used to contain children if children are absolutely positioned and out of flow. Also used to position element without changing layout.
+ */
+.slds-is-relative {
+  position: relative;
+}
+
+/**
+ * @summary Used to position an element relative to the viewport.
+ */
+.slds-is-fixed {
+  position: fixed;
+}
+
+/**
+ * @summary Used to position an element relative to its closest ancestor with relative positioning.
+ */
+.slds-is-absolute {
+  position: absolute;
+}

@@ -1,0 +1,34 @@
+/**
+ * @summary Forces element to scroll horizontally and vertically when content exceeds element's width and height
+ */
+.slds-scrollable {
+  -webkit-overflow-scrolling: touch;
+  overflow: auto;
+}
+
+/**
+ * @summary Forces overflow items to not scroll within element's width and height
+ */
+.slds-scrollable_none {
+  overflow: hidden;
+}
+
+/**
+ * @summary Forces element to scroll vertically when content exceeds element's height
+ */
+.slds-scrollable_y {
+  -webkit-overflow-scrolling: touch;
+  max-height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+/**
+ * @summary Forces element to scroll horizontally when content exceeds element's width
+ */
+.slds-scrollable_x {
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+  overflow: hidden;
+  overflow-x: auto;
+}

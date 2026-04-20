@@ -1,0 +1,285 @@
+/* stylelint-disable declaration-no-important */
+
+/**
+ * @summary Hides an element yet enables a screen reader to read the element that is hidden
+ */
+.slds-assistive-text {
+  position: absolute !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  text-transform: none !important;
+  white-space: nowrap !important;
+}
+
+/**
+ * @summary Enables `.slds-assistive-text` to become visible on focus
+ */
+.slds-assistive-text_focus:focus {
+  margin: inherit !important;
+  border: inherit !important;
+  padding: inherit !important;
+  width: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+  clip: auto !important;
+}
+
+/**
+ * @summary Hides elements inside a parent
+ */
+.slds-is-collapsed {
+  height: 0;
+  overflow: hidden;
+}
+
+/**
+ * @summary Shows the elements inside the parent
+ */
+.slds-is-expanded {
+  height: auto;
+  overflow: visible;
+}
+
+/**
+ * @summary Hides an element from the page by setting the visibility property to `hidden`
+ */
+.slds-hidden {
+  visibility: hidden !important;
+}
+
+/**
+ * @summary Shows the element by setting the visibility property to `visible`
+ */
+.slds-visible {
+  visibility: visible;
+}
+
+/**
+ * @summary Hides an element from the page by setting display propery to `none`
+ */
+.slds-hide {
+  display: none !important;
+}
+
+/**
+ * @summary Shows the element by setting display property to `block`
+ */
+.slds-show {
+  display: block;
+}
+
+/**
+ * @summary Shows the element by setting display to `inline-block`
+
+ */
+.slds-show_inline-block {
+  display: inline-block;
+}
+
+/**
+ * @summary Shows the element by setting display to `inline`
+ */
+.slds-show_inline {
+  display: inline;
+}
+
+/**
+ * @summary Hides an element from the page by setting the opacity property set to `0`
+ */
+.slds-transition-hide {
+  opacity: 0;
+}
+
+/**
+ * @summary Shows the element using the opacity property set to `1`
+ */
+.slds-transition-show {
+  opacity: 1;
+}
+
+/**
+ * Responsive show/hide classes
+ */
+.slds-x-small-show {
+  display: none;
+}
+@media (min-width: 320px) {
+  .slds-x-small-show {
+    display: block;
+  }
+  .slds-x-small-show_inline-block {
+    display: inline-block;
+  }
+  .slds-x-small-show_inline {
+    display: inline;
+  }
+}
+.slds-x-small-show-only {
+  display: none;
+}
+@media (min-width: 320px) and (max-width: 479px) {
+  .slds-x-small-show-only {
+    display: block;
+  }
+  .slds-x-small-show-only_inline-block {
+    display: inline-block;
+  }
+  .slds-x-small-show-only_inline {
+    display: inline;
+  }
+}
+
+@media (max-width: 479px) {
+  .slds-max-x-small-hide {
+    display: none;
+  }
+}
+
+.slds-small-show {
+  display: none;
+}
+@media (min-width: 480px) {
+  .slds-small-show {
+    display: block;
+  }
+  .slds-small-show_inline-block {
+    display: inline-block;
+  }
+  .slds-small-show_inline {
+    display: inline;
+  }
+}
+.slds-small-show-only {
+  display: none;
+}
+@media (min-width: 480px) and (max-width: 767px) {
+  .slds-small-show-only {
+    display: block;
+  }
+  .slds-small-show-only_inline-block {
+    display: inline-block;
+  }
+  .slds-small-show-only_inline {
+    display: inline;
+  }
+}
+
+@media (max-width: 767px) {
+  .slds-max-small-hide {
+    display: none;
+  }
+}
+
+.slds-medium-show {
+  display: none;
+}
+@media (min-width: 768px) {
+  .slds-medium-show {
+    display: block;
+  }
+  .slds-medium-show_inline-block {
+    display: inline-block;
+  }
+  .slds-medium-show_inline {
+    display: inline;
+  }
+}
+.slds-medium-show-only {
+  display: none;
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .slds-medium-show-only {
+    display: block;
+  }
+  .slds-medium-show-only_inline-block {
+    display: inline-block;
+  }
+  .slds-medium-show-only_inline {
+    display: inline;
+  }
+}
+
+@media (max-width: 1023px) {
+  .slds-max-medium-hide {
+    display: none;
+  }
+}
+
+.slds-large-show {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .slds-large-show {
+    display: block;
+  }
+  .slds-large-show_inline-block {
+    display: inline-block;
+  }
+  .slds-large-show_inline {
+    display: inline;
+  }
+}
+
+@media (min-width: 320px) {
+  .slds-hide_x-small {
+    display: none !important;
+  }
+}
+@media (max-width: 319px) {
+  .slds-show_x-small {
+    display: none !important;
+  }
+}
+@media (min-width: 480px) {
+  .slds-hide_small {
+    display: none !important;
+  }
+}
+@media (max-width: 479px) {
+  .slds-show_small {
+    display: none !important;
+  }
+}
+@media (min-width: 768px) {
+  .slds-hide_medium {
+    display: none !important;
+  }
+}
+@media (max-width: 767px) {
+  .slds-show_medium {
+    display: none !important;
+  }
+}
+@media (min-width: 1024px) {
+  .slds-hide_large {
+    display: none !important;
+  }
+}
+@media (max-width: 1023px) {
+  .slds-show_large {
+    display: none !important;
+  }
+}
+@media (min-width: 1280px) {
+  .slds-hide_x-large {
+    display: none !important;
+  }
+}
+@media (max-width: 1279px) {
+  .slds-show_x-large {
+    display: none !important;
+  }
+}
+
+/**
+ * @summary Hides element and removes width
+ */
+.slds-is-visually-empty {
+  visibility: hidden !important;
+  width: 0;
+}
