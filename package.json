@@ -4,14 +4,16 @@
   "description": "Starter template for prototyping Salesforce experiences with LWC, Vite, SLDS, and Lightning Base Components",
   "author": "Salesforce UX",
   "scripts": {
-    "clean": "rm -rf dist .vite node_modules",
+    "postinstall": "npm run skills:sync",
+    "skills:sync": "node scripts/sync-afv-skills.mjs",
     "prebuild-icons": "node scripts/prebuild-icons.mjs",
     "dev": "node scripts/prebuild-icons.mjs && vite",
+    "dev:native-shadow": "echo 'To use native shadow, set disableSyntheticShadowSupport: true in vite.config.js'",
     "build": "node scripts/prebuild-icons.mjs && vite build",
     "build:gh-pages": "node scripts/prebuild-icons.mjs && vite build --mode gh-pages",
     "preview": "vite preview",
     "deploy": "npm run build:gh-pages && gh-pages -d dist --nojekyll",
-    "dev:native-shadow": "echo 'To use native shadow, set disableSyntheticShadowSupport: true in vite.config.js'"
+    "clean": "rm -rf dist .vite node_modules"
   },
   "license": "SEE LICENSE IN LICENSE.txt",
   "type": "module",

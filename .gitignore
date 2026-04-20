@@ -13,6 +13,9 @@ src/build/generated/
 # Cursor (local-only)
 .cursor/commands/
 
+# Agent skills (synced from afv-library; see npm run skills:sync)
+.agent/skills/
+
 # OS
 .DS_Store
 
