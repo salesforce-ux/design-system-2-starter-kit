@@ -4,9 +4,11 @@ Thanks for your interest in contributing! This page covers the governance model,
 
 # Governance Model
 
-## Salesforce Sponsored
+## Salesforce Reviewed
 
-This project is open sourced and maintained by the Salesforce UX team. Only Salesforce employees will be given `admin` rights and will be the final arbiters of what contributions are accepted.
+This project is a *community-supported* initiative and does not have a formal maintenance SLA. While we actively encourage involvement, please keep the following guidelines in mind:
+- **Review Process:** All contributions are reviewed by designers or engineers within the Salesforce UX team.
+- **Decision Making:** Salesforce maintainers serve as the final arbiters on all roadmap decisions and pull request approvals.
 
 # Issues, requests & ideas
 
