@@ -30,13 +30,9 @@ Fix reported issues where possible. If something cannot be fixed, say so briefly
 - Do not use `!important`.
 - Do not use inline `style` attributes; use utility classes or the component’s CSS file as appropriate.
 
-### LWC troubleshooting
+### Modals
 
-If LWC or local tooling issues need platform-aware help, use the **Salesforce DX** MCP and its tools selectively.
-
-### Modals (this repo)
-
-Extend `lightning/modal` and follow `**src/modules/ui/demoModal/`** as the reference (header, body, footer slots; open via `MyModal.open({ size, label })`). Do not build modals from raw `slds-modal` markup.
+Extend `lightning/modal`, following `**src/modules/ui/demoModal/`** as the reference (header, body, footer slots; open via `MyModal.open({ size, label })`). Do not build modals from raw `slds-modal` markup.
 
 ### SLDS Agent Skills
 
@@ -47,6 +43,10 @@ SLDS skills live under **`.agent/skills/`**. **For UI change** (markup, CSS, lay
 | applying-slds | `.agent/skills/applying-slds/SKILL.md` | Default for SLDS-backed UI: blueprints, hooks, utilities, icons, LBC choice. |
 | uplifting-components-to-slds2 | `.agent/skills/uplifting-components-to-slds2/SKILL.md` | Migration and fixes from SLDS 1 to 2; linter violations and hook/token replacements. |
 | validating-slds | `.agent/skills/validating-slds/SKILL.md` | Compliance audit or scored quality report, not for implementing or fixing UI. |
+
+### LWC troubleshooting
+
+Use the **Salesforce DX MCP** selectively ONLY for **LWC framework and Salesforce-platform** issues (`@api`, `@wire`, lifecycle, events, org-only behavior).
 
 ### Deployment (GitHub Pages)
 
