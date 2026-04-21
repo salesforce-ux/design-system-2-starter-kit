@@ -34,6 +34,10 @@ Fix reported issues where possible. If something cannot be fixed, say so briefly
 
 Extend `lightning/modal`, following `**src/modules/ui/demoModal/`** as the reference (header, body, footer slots; open via `MyModal.open({ size, label })`). Do not build modals from raw `slds-modal` markup.
 
+### Forms
+
+Use Lightning Base Component form elements (`lightning-input`, `lightning-combobox`, `lightning-radio-group`, `lightning-textarea`, `lightning-select`) for all form inputs. Do not use raw `<input>`, `<select>`, or `<textarea>`. Use correct input `type` (e.g., `type="email"`) and `read-only` mode for data display.
+
 ### SLDS Agent Skills
 
 SLDS skills live under **`.agent/skills/`**. **For UI change** (markup, CSS, layout, icons, LBC vs blueprint), **read and follow `.agent/skills/applying-slds/SKILL.md` first**. **Do not** improvise SLDS from memory when it exists. Re-read it when you iterate on presentation. **Exceptions:** **`uplifting-components-to-slds2`** for SLDS 1→2 / linter-driven uplift only; **`validating-slds`** for audit or scorecard requests only. **Neither** replaces **`applying-slds`** when you are building or extending UI.
