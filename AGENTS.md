@@ -40,7 +40,7 @@ Use Lightning Base Component form elements (`lightning-input`, `lightning-combob
 
 ### SLDS Agent Skills
 
-SLDS skills live under **`.agent/skills/`**. **For UI change** (markup, CSS, layout, icons, LBC vs blueprint), **read and follow `.agent/skills/applying-slds/SKILL.md` first**. **Do not** improvise SLDS from memory when it exists. Re-read it when you iterate on presentation. **Exceptions:** **`uplifting-components-to-slds2`** for SLDS 1→2 / linter-driven uplift only; **`validating-slds`** for audit or scorecard requests only. **Neither** replaces **`applying-slds`** when you are building or extending UI.
+SLDS skills live under **`.agent/skills/`** (synced on `npm install`; run `npm run skills:sync` if missing). **For UI change** (markup, CSS, layout, icons, LBC vs blueprint), **read and follow `.agent/skills/applying-slds/SKILL.md` first**. **Do not** improvise SLDS from memory when it exists. Re-read it when you iterate on presentation. **Exceptions:** **`uplifting-components-to-slds2`** for SLDS 1→2 / linter-driven uplift only; **`validating-slds`** for audit or scorecard requests only. **Neither** replaces **`applying-slds`** when you are building or extending UI.
 
 | Skill | `SKILL.md` | When to use |
 |-------|------------|-------------|

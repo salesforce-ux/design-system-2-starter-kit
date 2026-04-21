@@ -23,11 +23,13 @@ const SKILL_NAMES = [
 ];
 
 function runGit(args) {
-    const result = spawnSync('git', args, { stdio: 'inherit' });
+    const result = spawnSync('git', args, { stdio: ['ignore', 'pipe', 'pipe'] });
     if (result.error) {
         throw result.error;
     }
     if (result.status !== 0) {
+        const stderr = result.stderr?.toString().trim();
+        if (stderr) console.error(stderr);
         process.exit(result.status ?? 1);
     }
 }
@@ -36,6 +38,7 @@ const tmpBase = fs.mkdtempSync(path.join(os.tmpdir(), 'afv-skills-'));
 const cloneDir = path.join(tmpBase, 'repo');
 
 try {
+    console.log('sync-afv-skills: fetching skills from afv-library…');
     runGit(['clone', '--depth', '1', '--branch', BRANCH, REPO_URL, cloneDir]);
 
     const skillsRoot = path.join(cloneDir, 'skills');
