@@ -81,7 +81,7 @@ Use the current directory name as the default repo name. If it is still `design-
 gh repo create <repo-name> --internal --source=. --hostname git.soma.salesforce.com
 ```
 
-This creates the repo under the user's personal account with **internal** visibility (accessible to org members). If the user specifically asks to create it under an org, use `<org>/<repo-name>` instead.
+This creates the repo under the user's personal account with **internal** visibility (accessible to org members). Do not ask about organizations unless the user specifically mentions it.
 
 ### 6. Commit and push
 
