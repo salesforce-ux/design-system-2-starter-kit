@@ -25,7 +25,7 @@ Fix reported issues where possible. If something cannot be fixed, say so briefly
 
 ### Engineering habits
 
-- For UI work, **read `.agent/skills/applying-slds/SKILL.md` first**.
+- For UI work, **read `.agent/skills/afv-library/applying-slds/SKILL.md` first**.
 - Prefer small, single-responsibility LWCs and readable structure.
 - Do not use `!important`.
 - Do not use inline `style` attributes; use utility classes or the component’s CSS file as appropriate.
@@ -40,13 +40,17 @@ Use Lightning Base Component form elements (`lightning-input`, `lightning-combob
 
 ### SLDS Agent Skills
 
-SLDS skills live under **`.agent/skills/`** (synced on `npm install`; run `npm run skills:sync` if missing). **For UI change** (markup, CSS, layout, icons, LBC vs blueprint), **read and follow `.agent/skills/applying-slds/SKILL.md` first**. **Do not** improvise SLDS from memory when it exists. Re-read it when you iterate on presentation. **Exceptions:** **`uplifting-components-to-slds2`** for SLDS 1→2 / linter-driven uplift only; **`validating-slds`** for audit or scorecard requests only. **Neither** replaces **`applying-slds`** when you are building or extending UI.
+SLDS skills live under **`.agent/skills/`**. The **`afv-library/`** subfolder is synced from `forcedotcom/afv-library` on `npm install` (refresh with `npm run skills:sync`).
+
+- **For UI work** (markup, CSS, layout, icons, LBC vs blueprint), **read and follow `.agent/skills/afv-library/applying-slds/SKILL.md` first**. Do not improvise SLDS from memory when a skill exists. Re-read it when you iterate on presentation.
+- **`uplifting-components-to-slds2`** — SLDS 1→2 / linter-driven uplift only.
+- **`validating-slds`** — audit or scorecard requests only.
 
 | Skill | `SKILL.md` | When to use |
 |-------|------------|-------------|
-| applying-slds | `.agent/skills/applying-slds/SKILL.md` | Default for SLDS-backed UI: blueprints, hooks, utilities, icons, LBC choice. |
-| uplifting-components-to-slds2 | `.agent/skills/uplifting-components-to-slds2/SKILL.md` | Migration and fixes from SLDS 1 to 2; linter violations and hook/token replacements. |
-| validating-slds | `.agent/skills/validating-slds/SKILL.md` | Compliance audit or scored quality report, not for implementing or fixing UI. |
+| applying-slds | `.agent/skills/afv-library/applying-slds/SKILL.md` | Default for SLDS-backed UI: blueprints, hooks, utilities, icons, LBC choice. |
+| uplifting-components-to-slds2 | `.agent/skills/afv-library/uplifting-components-to-slds2/SKILL.md` | Migration and fixes from SLDS 1 to 2; linter violations and hook/token replacements. |
+| validating-slds | `.agent/skills/afv-library/validating-slds/SKILL.md` | Compliance audit or scored quality report, not for implementing or fixing UI. |
 
 ### LWC troubleshooting
 

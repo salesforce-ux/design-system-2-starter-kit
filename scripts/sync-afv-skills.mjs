@@ -1,5 +1,7 @@
 /**
- * Copies selected Agentforce Verifier (afv-library) skills into `.agent/skills/`.
+ * Copies selected Agentforce Verifier (afv-library) skills into `.agent/skills/afv-library/`.
+ * Other skill folders under `.agent/skills/` are tracked in git. See AGENTS.md.
+ *
  * Invoked via `npm run skills:sync` and from `postinstall`.
  *
  * Requires: git on PATH, network access to GitHub.
@@ -12,7 +14,8 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.join(__dirname, '..');
-const DEST_BASE = path.join(REPO_ROOT, '.agent', 'skills');
+/** Synced vendor skills only; do not commit this tree (see .gitignore). */
+const DEST_BASE = path.join(REPO_ROOT, '.agent', 'skills', 'afv-library');
 
 const REPO_URL = 'https://github.com/forcedotcom/afv-library.git';
 const BRANCH = 'develop';

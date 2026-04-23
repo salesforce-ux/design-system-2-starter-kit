@@ -62,7 +62,7 @@ design-system-2-starter-kit/
 │   └── index.js                   # App entry point
 ├── scripts/
 │   ├── prebuild-icons.mjs         # Icon codegen (run via npm scripts)
-│   └── sync-afv-skills.mjs        # Copies afv-library skills → .agent/skills/
+│   └── sync-afv-skills.mjs        # Copies afv-library skills → .agent/skills/afv-library/
 ├── index.html
 ├── vite.config.js
 └── package.json
@@ -178,11 +178,10 @@ After GitHub finishes publishing, find your live site URL on **Settings → Page
 
 This project includes an `mcp.json` that automatically configures the [Salesforce DX MCP server](https://www.npmjs.com/package/@salesforce/mcp) for AI-assisted development. Editors that support MCP (e.g. Claude Code, Cursor, VS Code with Copilot) will pick it up and gain access to Salesforce-specific code analysis and LWC guidance tools. No setup is required — the server runs via `npx` on demand.
 
-### SLDS / design-system agent skills (afv-library)
+### Agent skills (layout)
 
-After `npm install`, selected skills from [`forcedotcom/afv-library`](https://github.com/forcedotcom/afv-library) (`develop`) are copied into **`.agent/skills/`** (gitignored). Initial sync needs **git** and network access to GitHub.
-
-To refresh the skill files from the latest `develop`, run **`npm run skills:sync`** directly.
+- **`.agent/skills/afv-library/`** — Selected skills from [`forcedotcom/afv-library`](https://github.com/forcedotcom/afv-library) (`develop`) are copied here on **`npm install`** (gitignored). Refresh with **`npm run skills:sync`**.
+- **`.agent/skills/<skill-id>/`** — Skills that ship with this project.
 
 ## References
 
