@@ -1,12 +1,12 @@
 ---
 name: repo-setup
 version: "1.0.0"
-description: "Set up a GitHub repo for this project on git.soma.salesforce.com. Covers prerequisites (brew, gh CLI, auth), repo creation, and initial push. Use when the user needs a remote repo, asks about pushing code, or before first-time-deploy."
+description: "Set up a GitHub repo for this project. Detects the GitHub host from the origin remote, covers prerequisites (brew, gh CLI, auth), repo creation, and initial push. Use when the user needs a remote repo, asks about pushing code, or before first-time-deploy."
 ---
 
 # Repo Setup
 
-Set up a remote GitHub repository for this project. The primary host is **git.soma.salesforce.com**. Users on GitHub EMU or personal github.com accounts can select **GitHub.com** instead of **Other** during `gh auth login`.
+Set up a remote GitHub repository for this project.
 
 ## Tone
 
@@ -14,7 +14,35 @@ Set up a remote GitHub repository for this project. The primary host is **git.so
 
 ## Steps
 
-### 1. Ensure Homebrew is installed
+### 1. Ensure this is a git repo
+
+```bash
+git rev-parse --git-dir
+```
+
+If this is not a git repository (e.g. the user downloaded a zip), initialize one and create an initial commit:
+
+```bash
+git init
+git add .
+git commit -m "Initial commit"
+```
+
+### 2. Detect the GitHub host
+
+Check the existing `origin` remote to determine which GitHub host this project uses:
+
+```bash
+git remote get-url origin
+```
+
+Extract the hostname from the URL (e.g. `github.com`, or a GitHub Enterprise hostname). Use this as `<hostname>` throughout the remaining steps.
+
+If `origin` points to the template repo (`salesforce-ux/design-system-2-starter-kit`), extract the hostname from it but do not treat it as the user's own repo. The user will still need a new repo created in step 7.
+
+If `origin` is not set at all (e.g. freshly initialized from a zip), ask the user which GitHub host they use.
+
+### 3. Ensure Homebrew is installed
 
 ```bash
 which brew
@@ -26,7 +54,7 @@ If missing, install it (this may take a minute):
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-### 2. Ensure `gh` CLI is installed
+### 4. Ensure `gh` CLI is installed
 
 ```bash
 which gh
@@ -38,12 +66,12 @@ If missing:
 brew install gh
 ```
 
-### 3. Authenticate with GitHub
+### 5. Authenticate with GitHub
 
-Check whether the user is already authenticated:
+Check whether the user is already authenticated with `<hostname>`:
 
 ```bash
-gh auth status --hostname git.soma.salesforce.com
+gh auth status --hostname <hostname>
 ```
 
 If not authenticated, walk the user through `gh auth login`:
@@ -53,37 +81,30 @@ gh auth login
 ```
 
 When prompted:
-1. **Where do you use GitHub?** Select **Other**
-2. **Hostname** Enter `git.soma.salesforce.com`
-3. Follow the remaining browser/token prompts
+1. **Where do you use GitHub?** If `<hostname>` is `github.com`, select **GitHub.com**. Otherwise, select **Other** and enter the hostname.
+2. Follow the remaining browser/token prompts.
 
-> For GitHub EMU or github.com, select **GitHub.com** instead of **Other** in step 1.
+### 6. Check for an existing remote repo
 
-### 4. Check for an existing remote repo
-
-```bash
-git remote get-url origin
-```
-
-If `origin` is set, verify the repo is reachable:
+If `origin` is set and is not the template repo (from step 2), verify the repo is reachable:
 
 ```bash
-gh repo view --json name --hostname git.soma.salesforce.com
+gh repo view --json name --hostname <hostname>
 ```
 
 If `origin` is not set or the repo does not exist, tell the user no remote repository was found and ask if they'd like to create one.
 
-### 5. Create a repo (if needed)
+### 7. Create a repo (if needed)
 
 Use the current directory name as the default repo name. If it is still `design-system-2-starter-kit`, ask the user what they want to name the project instead. Confirm the name with the user before proceeding.
 
 ```bash
-gh repo create <repo-name> --internal --source=. --hostname git.soma.salesforce.com
+gh repo create <repo-name> --internal --source=. --hostname <hostname>
 ```
 
-This creates the repo under the user's personal account with **internal** visibility (accessible to org members). Do not ask about organizations unless the user specifically mentions it.
+This creates the repo under the user's personal account with **internal** visibility (accessible to org members). Do not ask about organizations.
 
-### 6. Commit and push
+### 8. Commit and push
 
 Check for uncommitted changes:
 
@@ -101,10 +122,10 @@ git push -u origin main
 
 Ask the user before pushing. If the default branch is not `main`, use whatever branch is current.
 
-### 7. Confirm
+### 9. Confirm
 
 Tell the user the repo is set up and their code has been pushed. Provide the repo URL:
 
 ```bash
-gh repo view --json url --hostname git.soma.salesforce.com --jq '.url'
+gh repo view --json url --hostname <hostname> --jq '.url'
 ```

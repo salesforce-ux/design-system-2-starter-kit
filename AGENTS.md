@@ -51,7 +51,7 @@ SLDS skills live under **`.agent/skills/`**. The **`afv-library/`** subfolder is
 | applying-slds | `.agent/skills/afv-library/applying-slds/SKILL.md` | Default for SLDS-backed UI: blueprints, hooks, utilities, icons, LBC choice. |
 | uplifting-components-to-slds2 | `.agent/skills/afv-library/uplifting-components-to-slds2/SKILL.md` | Migration and fixes from SLDS 1 to 2; linter violations and hook/token replacements. |
 | validating-slds | `.agent/skills/afv-library/validating-slds/SKILL.md` | Compliance audit or scored quality report, not for implementing or fixing UI. |
-| repo-setup | `.agent/skills/repo-setup/SKILL.md` | Set up a GitHub repo on git.soma.salesforce.com: prerequisites, repo creation, initial push. Use when the user mentions saving or backing up their work. |
+| repo-setup | `.agent/skills/repo-setup/SKILL.md` | Set up a GitHub repo: detects host from origin remote, prerequisites, repo creation, initial push. Use when the user mentions saving or backing up their work. |
 | first-time-deploy | `.agent/skills/first-time-deploy/SKILL.md` | Publish to GitHub Pages. Repeat deploys: just `npm run deploy`. First time: runs repo-setup, then deploys and configures Pages. Use when the user asks about deploying or sharing a link with a PM, stakeholder, etc. |
 
 ### LWC troubleshooting
