@@ -10,7 +10,7 @@ Set up a remote GitHub repository for this project. The primary host is **git.so
 
 ## Tone
 
-Use correct technical terms (commit, push, repository, branch) but pair them with a short plain-language explanation, e.g. "commit your changes (save a snapshot of your work)" or "push your code (send your latest changes to GitHub so others can see them)".
+**Important:** The user may not be technical. Always use the correct technical term but immediately follow it with a plain-language explanation in parentheses, e.g. "commit your changes (save a snapshot of your work)" or "push your code (send your latest changes to GitHub so others can see them)". Do this every time, not just the first mention.
 
 ## Steps
 
@@ -75,19 +75,13 @@ If `origin` is not set or the repo does not exist, tell the user no remote repos
 
 ### 5. Create a repo (if needed)
 
-Detect the user's available orgs:
+Use the current directory name as the default repo name. If it is still `design-system-2-starter-kit`, ask the user what they want to name the project instead. Confirm the name with the user before proceeding.
 
 ```bash
-gh api user/orgs --hostname git.soma.salesforce.com --jq '.[].login'
+gh repo create <repo-name> --internal --source=. --hostname git.soma.salesforce.com
 ```
 
-Use the current directory name as the default repo name. If it is still `design-system-2-starter-kit`, ask the user what they want to name the project instead. Confirm the org and repo name with the user before proceeding.
-
-```bash
-gh repo create <org>/<repo-name> --internal --source=. --hostname git.soma.salesforce.com
-```
-
-The repo is created with **internal** visibility by default (accessible to org members).
+This creates the repo under the user's personal account with **internal** visibility (accessible to org members). If the user specifically asks to create it under an org, use `<org>/<repo-name>` instead.
 
 ### 6. Commit and push
 

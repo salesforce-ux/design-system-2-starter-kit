@@ -12,7 +12,7 @@ The steps below cover **first-time setup**: ensuring a repo exists, deploying, a
 
 ## Tone
 
-Use correct technical terms (commit, push, repository, branch) but pair them with a short plain-language explanation, e.g. "deploy your site (build and publish it so others can visit the link)" or "configure Pages (tell GitHub which branch to serve as a website)".
+**Important:** The user may not be technical. Always use the correct technical term but immediately follow it with a plain-language explanation in parentheses, e.g. "commit your changes (save a snapshot of your work)" or "push your code (send your latest changes to GitHub so others can see them)". Do this every time, not just the first mention.
 
 ## Prerequisites
 
