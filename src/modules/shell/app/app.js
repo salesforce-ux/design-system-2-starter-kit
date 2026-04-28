@@ -1,6 +1,13 @@
 import { LightningElement } from 'lwc';
-import { subscribe, navigate, linkHref } from '../../../router';
+import { subscribe, navigate, linkHref, setCurrentAppForLinks } from '../../../router';
 import { routes } from '../../../routes.config';
+import {
+    apps,
+    getAppById,
+    getPersistedAppId,
+    persistAppId,
+    DEFAULT_APP_ID,
+} from '../../../apps.config';
 import { toggleSLDS, activeSLDSVersion, STORAGE_KEY_SLDS_VERSION } from '../../../build/slds-loader';
 import Home from 'page/home';
 import IconTest from 'page/iconTest';
@@ -28,11 +35,10 @@ const NAV_PAGE_TO_PATH = Object.fromEntries(
     routes.filter((r) => r.navPage).map((r) => [r.navPage, r.navPath ?? r.path])
 );
 
-/** Nav items for global navigation (tabs + waffle). From routes with navPage. */
-const NAV_ITEMS = routes.filter((r) => r.navPage).map((r) => {
-    const path = r.navPath ?? r.path;
-    return { page: r.navPage, label: r.navLabel, path, href: linkHref(path) };
-});
+/** Derived from routes.config: nav page id → full route entry (label, icon, etc.) */
+const NAV_PAGE_TO_ROUTE = Object.fromEntries(
+    routes.filter((r) => r.navPage).map((r) => [r.navPage, r])
+);
 
 const STORAGE_KEY_DARK_MODE = 'slds-ui-dark-mode';
 
@@ -40,6 +46,7 @@ export default class App extends LightningElement {
     route;
     _sldsVersion = 2;
     _darkMode = false;
+    _currentApp = getPersistedAppId() || DEFAULT_APP_ID;
     selectedPanel = 'agentforce_panel';
     isPanelOpen = false;
 
@@ -54,15 +61,63 @@ export default class App extends LightningElement {
         return name ? (ROUTE_TO_NAV_PAGE[name] ?? 'home') : 'home';
     }
 
+    get currentApp() {
+        return this._currentApp;
+    }
+
+    get currentAppVariant() {
+        const app = getAppById(this._currentApp) || getAppById(DEFAULT_APP_ID);
+        return app?.variant ?? 'standard';
+    }
+
+    /** Pages exposed in the current app's primary nav (Standard tabs). */
     get navItems() {
-        return NAV_ITEMS;
+        const app = getAppById(this._currentApp) || getAppById(DEFAULT_APP_ID);
+        return app.pages
+            .map((pageId) => NAV_PAGE_TO_ROUTE[pageId])
+            .filter(Boolean)
+            .map((r) => {
+                const path = r.navPath ?? r.path;
+                return { page: r.navPage, label: r.navLabel, path, href: linkHref(path) };
+            });
+    }
+
+    /**
+     * Pages in the current app, shaped for the Console object switcher menu:
+     * label, icon, and an isCurrent flag to drive the selected indicator.
+     */
+    get pagesInCurrentApp() {
+        const current = this.currentNavPage;
+        return this.navItems.map((item) => ({
+            page: item.page,
+            label: item.label,
+            href: item.href,
+            isCurrent: item.page === current,
+        }));
+    }
+
+    /** All apps for the App Launcher (waffle), with isCurrent flag and href to defaultPath. */
+    get appItems() {
+        return apps.map((a) => ({
+            id: a.id,
+            label: a.label,
+            href: linkHref(a.defaultPath, a.id),
+            isCurrent: a.id === this._currentApp,
+        }));
     }
 
     connectedCallback() {
         this._restorePreferences();
         this._sldsVersion = activeSLDSVersion();
+        setCurrentAppForLinks(this._currentApp);
         this.unsubscribe = subscribe((route) => {
             this.route = route;
+            const newApp = route?.app;
+            if (newApp && newApp !== this._currentApp) {
+                this._currentApp = newApp;
+                persistAppId(newApp);
+                setCurrentAppForLinks(newApp);
+            }
         });
     }
 
@@ -104,6 +159,16 @@ export default class App extends LightningElement {
         const page = event.detail?.page;
         const path = page ? NAV_PAGE_TO_PATH[page] : '/';
         navigate(path);
+    }
+
+    handleAppSwitch(event) {
+        const appId = event.detail?.app;
+        const target = getAppById(appId);
+        if (!target) return;
+        this._currentApp = appId;
+        persistAppId(appId);
+        setCurrentAppForLinks(appId);
+        navigate(target.defaultPath);
     }
 
     handlePanelSelect(event) {

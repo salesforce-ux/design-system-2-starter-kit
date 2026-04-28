@@ -1,5 +1,5 @@
 <template>
-    <div class="slds-context-bar">
+    <div class={contextBarClass}>
         <div class="slds-context-bar__primary">
             <div
                 class={waffleDropdownTriggerClass}
@@ -18,42 +18,94 @@
                     if:true={isWaffleMenuOpen}
                     onkeydown={handleWaffleMenuKeydown}>
                     <ul class="slds-dropdown__list" role="group">
-                        <template for:each={navItems} for:item="item">
-                            <li key={item.page} class="slds-dropdown__item" role="presentation">
+                        <template for:each={appItemsWithCurrent} for:item="item">
+                            <li key={item.id} class="slds-dropdown__item" role="presentation">
                                 <a
                                     href={item.href}
                                     role="menuitem"
                                     tabindex="-1"
-                                    data-value={item.page}
+                                    aria-current={item.ariaCurrent}
+                                    data-value={item.id}
                                     onclick={handleWaffleMenuItemClick}>
-                                    {item.label}
+                                    <span class="slds-truncate" title={item.label}>{item.label}</span>
                                 </a>
                             </li>
                         </template>
                     </ul>
                 </div>
                 <span class="slds-context-bar__label-action slds-context-bar__app-name">
-                    <span class="slds-truncate" title="Salesforce UI Starter Kit">Salesforce UI Starter Kit</span>
+                    <span class="slds-truncate" title={currentAppLabel}>{currentAppLabel}</span>
                 </span>
             </div>
+
+            <template lwc:if={isConsole}>
+                <div class={objectSwitcherTriggerClass} role="presentation">
+                    <a
+                        href="javascript:void(0);"
+                        class="slds-context-bar__label-action"
+                        title={currentPageLabel}
+                        onclick={handleObjectSwitcherToggle}>
+                        <span class="slds-truncate" title={currentPageLabel}>{currentPageLabel}</span>
+                    </a>
+                    <div class="slds-context-bar__icon-action">
+                        <button
+                            class="slds-button slds-button_icon slds-button_icon-container slds-button_icon-x-small"
+                            aria-haspopup="true"
+                            title="Open object switcher menu"
+                            onclick={handleObjectSwitcherToggle}>
+                            <lightning-icon
+                                icon-name="utility:chevrondown"
+                                size="xx-small"
+                                alternative-text="Open object switcher menu">
+                            </lightning-icon>
+                        </button>
+                    </div>
+                    <div
+                        class="slds-dropdown slds-dropdown_left"
+                        if:true={isObjectSwitcherOpen}
+                        onkeydown={handleObjectSwitcherKeydown}>
+                        <div
+                            class="slds-dropdown__list"
+                            role="menu"
+                            onprivateselect={handleObjectSwitcherSelect}>
+                            <template for:each={pagesInCurrentApp} for:item="item">
+                                <lightning-menu-item
+                                    key={item.page}
+                                    label={item.label}
+                                    value={item.page}>
+                                </lightning-menu-item>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </template>
         </div>
-        <nav class="slds-context-bar__secondary" role="navigation" aria-label="App navigation">
-            <ul class="slds-grid slds-container_fluid">
-                <template for:each={navItemsWithActive} for:item="item">
-                    <li key={item.page} class={item.tabClass}>
-                        <a
-                            href={item.href}
-                            class="slds-context-bar__label-action"
-                            title={item.label}
-                            aria-current={item.ariaCurrent}
-                            data-page={item.page}
-                            onclick={handleNavItemClick}>
-                            <span class="slds-assistive-text" if:true={item.isActive}>Current Page:</span>
-                            <span class="slds-truncate" title={item.label}>{item.label}</span>
-                        </a>
-                    </li>
-                </template>
-            </ul>
-        </nav>
+
+        <template lwc:if={isStandard}>
+            <nav class="slds-context-bar__secondary" role="navigation" aria-label="App navigation">
+                <ul class="slds-grid slds-container_fluid">
+                    <template for:each={navItemsWithActive} for:item="item">
+                        <li key={item.page} class={item.tabClass}>
+                            <a
+                                href={item.href}
+                                class="slds-context-bar__label-action"
+                                title={item.label}
+                                aria-current={item.ariaCurrent}
+                                data-page={item.page}
+                                onclick={handleNavItemClick}>
+                                <span class="slds-assistive-text" if:true={item.isActive}>Current Page:</span>
+                                <span class="slds-truncate" title={item.label}>{item.label}</span>
+                            </a>
+                        </li>
+                    </template>
+                </ul>
+            </nav>
+        </template>
+        <template lwc:elseif={isConsole}>
+            <div class="slds-context-bar__secondary" role="presentation">
+                <div class="slds-context-bar__vertical-divider"></div>
+                <!-- Workspace tab strip will live here in a follow-up pass. -->
+            </div>
+        </template>
     </div>
 </template>

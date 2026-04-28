@@ -1,6 +1,14 @@
 <template>
     <!-- Global shell: top, edge to edge, height by content -->
-    <shell-global-shell current-page={currentNavPage} nav-items={navItems} onnavigate={handleNavNavigate} onpanelselect={handlePanelSelect}>
+    <shell-global-shell
+        current-page={currentNavPage}
+        nav-items={navItems}
+        current-app-variant={currentAppVariant}
+        app-items={appItems}
+        pages-in-current-app={pagesInCurrentApp}
+        onnavigate={handleNavNavigate}
+        onappswitch={handleAppSwitch}
+        onpanelselect={handlePanelSelect}>
     </shell-global-shell>
 
     <!-- Main content and docked panel -->

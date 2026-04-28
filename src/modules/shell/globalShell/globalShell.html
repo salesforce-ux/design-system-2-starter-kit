@@ -4,7 +4,15 @@
             <shell-global-header onpanelselect={handlePanelSelect}></shell-global-header>
         </lightning-layout-item>
         <lightning-layout-item size="12" padding="none">
-            <shell-global-navigation current-page={currentPage} nav-items={navItems} onnavigate={handleNavigate}></shell-global-navigation>
+            <shell-global-navigation
+                variant={currentAppVariant}
+                current-page={currentPage}
+                nav-items={navItems}
+                app-items={appItems}
+                pages-in-current-app={pagesInCurrentApp}
+                onnavigate={handleNavigate}
+                onappswitch={handleAppSwitch}>
+            </shell-global-navigation>
         </lightning-layout-item>
     </lightning-layout>
 </template>
