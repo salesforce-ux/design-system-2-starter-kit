@@ -31,8 +31,22 @@ export default class GlobalNavigation extends LightningElement {
         return this.isWaffleMenuOpen ? `${base} slds-is-open` : base;
     }
 
-    get objectSwitcherTriggerClass() {
-        const base = 'slds-context-bar__item slds-context-bar__object-switcher slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger_click';
+    /** True when the "main" object-switcher tab is the focused tab (no transient tab active). */
+    get isMainTabActive() {
+        return true;
+    }
+
+    get mainTabAriaSelected() {
+        return this.isMainTabActive ? 'true' : 'false';
+    }
+
+    get objectSwitcherTabClass() {
+        const base = 'slds-context-bar__item slds-context-bar__object-switcher';
+        return this.isMainTabActive ? `${base} slds-is-active` : base;
+    }
+
+    get objectSwitcherChevronClass() {
+        const base = 'slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger_click slds-no-hover';
         return this.isObjectSwitcherOpen ? `${base} slds-is-open` : base;
     }
 
@@ -189,7 +203,7 @@ export default class GlobalNavigation extends LightningElement {
     _objectSwitcherMenuItems() {
         return Array.from(
             this.template.querySelectorAll(
-                '.slds-context-bar__object-switcher lightning-menu-item'
+                '.slds-context-bar__dropdown-trigger lightning-menu-item'
             )
         );
     }
@@ -203,7 +217,7 @@ export default class GlobalNavigation extends LightningElement {
 
     _focusObjectSwitcherTrigger() {
         const trigger = this.template.querySelector(
-            '.slds-context-bar__object-switcher .slds-context-bar__icon-action button'
+            '.slds-context-bar__dropdown-trigger lightning-button-icon'
         );
         if (trigger?.focus) trigger.focus();
     }
@@ -252,8 +266,8 @@ export default class GlobalNavigation extends LightningElement {
             }
         }
         if (this.isObjectSwitcherOpen) {
-            const obj = this.template.querySelector('.slds-context-bar__object-switcher');
-            if (obj && !path.includes(obj)) {
+            const chevron = this.template.querySelector('.slds-context-bar__dropdown-trigger');
+            if (chevron && !path.includes(chevron)) {
                 this.isObjectSwitcherOpen = false;
             }
         }

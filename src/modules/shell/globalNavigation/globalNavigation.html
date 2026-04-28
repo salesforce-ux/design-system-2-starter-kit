@@ -39,27 +39,24 @@
             </div>
 
             <template lwc:if={isConsole}>
-                <div class={objectSwitcherTriggerClass} role="presentation">
-                    <a
-                        href="javascript:void(0);"
+                <div class={objectSwitcherTabClass}>
+                    <button
                         class="slds-context-bar__label-action"
-                        title={currentPageLabel}
-                        onclick={handleObjectSwitcherToggle}>
+                        role="tab"
+                        aria-selected={mainTabAriaSelected}
+                        title={currentPageLabel}>
                         <span class="slds-truncate" title={currentPageLabel}>{currentPageLabel}</span>
-                    </a>
-                    <div class="slds-context-bar__icon-action">
-                        <button
-                            class="slds-button slds-button_icon slds-button_icon-container slds-button_icon-x-small"
-                            aria-haspopup="true"
-                            title="Open object switcher menu"
-                            onclick={handleObjectSwitcherToggle}>
-                            <lightning-icon
-                                icon-name="utility:chevrondown"
-                                size="xx-small"
-                                alternative-text="Open object switcher menu">
-                            </lightning-icon>
-                        </button>
-                    </div>
+                    </button>
+                </div>
+                <div class={objectSwitcherChevronClass} role="presentation">
+                    <lightning-button-icon
+                        class="slds-m-horizontal_xx-small"
+                        icon-name="utility:chevrondown"
+                        variant="container"
+                        alternative-text="Open object switcher menu"
+                        aria-haspopup="true"
+                        onclick={handleObjectSwitcherToggle}>
+                    </lightning-button-icon>
                     <div
                         class="slds-dropdown slds-dropdown_left"
                         if:true={isObjectSwitcherOpen}

@@ -1,0 +1,11 @@
+lightning-button-icon {
+    --slds-c-icon-color-foreground-default: var(--slds-g-color-accent-1, #0176d3);
+}
+
+button[role="tab"] {
+    border: none;
+    background: none;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+}
