@@ -1,10 +1,10 @@
 <template>
     <lightning-layout class="global-shell" multiple-rows>
         <lightning-layout-item size="12" padding="none">
-            <shell-global-header onpanelselect={handlePanelSelect}></shell-global-header>
+            <ui-global-header onpanelselect={handlePanelSelect}></ui-global-header>
         </lightning-layout-item>
         <lightning-layout-item size="12" padding="none">
-            <shell-global-navigation
+            <ui-global-navigation
                 variant={currentAppVariant}
                 current-page={currentPage}
                 nav-items={navItems}
@@ -12,7 +12,7 @@
                 pages-in-current-app={pagesInCurrentApp}
                 onnavigate={handleNavigate}
                 onappswitch={handleAppSwitch}>
-            </shell-global-navigation>
+            </ui-global-navigation>
         </lightning-layout-item>
     </lightning-layout>
 </template>

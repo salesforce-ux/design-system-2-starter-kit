@@ -40,8 +40,6 @@ design-system-2-starter-kit/
 │   │   ├── shell/                 # App shell (shell-*)
 │   │   │   ├── app/               # Root app, route rendering
 │   │   │   ├── globalShell/       # Layout wrapper
-│   │   │   ├── globalHeader/      # Top bar
-│   │   │   ├── globalNavigation/ # Nav links
 │   │   │   ├── panel/             # Side panel
 │   │   │   └── themeSwitcher/     # SLDS version + dark mode
 │   │   ├── page/                  # Route-level views (page-*)
@@ -49,6 +47,8 @@ design-system-2-starter-kit/
 │   │   │   ├── user/              # e.g. /users/:id
 │   │   │   └── iconTest/
 │   │   ├── ui/                    # Reusable building blocks (ui-*)
+│   │   │   ├── globalHeader/      # Top bar (ui-global-header)
+│   │   │   ├── globalNavigation/ # App navigation (ui-global-navigation)
 │   │   │   └── example/
 │   │   └── data/                  # Shared modules (e.g. fixtures) imported as data/*
 │   ├── build/                     # Build wiring, generated assets, shims (not LWC app UI)
@@ -74,12 +74,12 @@ Folder-based namespaces under `src/modules/` define the LWC tag prefix:
 
 | Folder        | Tag prefix | Use for |
 |---------------|------------|--------|
-| **shell/**    | `shell-*`  | App shell only (e.g. `shell-app`, `shell-global-header`). Not for feature pages. |
+| **shell/**    | `shell-*`  | App shell only (e.g. `shell-app`, `shell-global-shell`). Not for feature pages. |
 | **page/**     | `page-*`   | Route-level views (one per URL). e.g. `page-user` → `/users/:id`. |
-| **ui/**       | `ui-*`     | Reusable building blocks (cards, buttons, modals). Used inside pages or other components. |
+| **ui/**       | `ui-*`     | Reusable building blocks and SLDS blueprint implementations (e.g. `ui-global-header`, `ui-global-navigation`). Used inside pages or other components. |
 | **data/**     | —          | Plain modules (e.g. fixtures), imported as `data/<name>`. Not LWC tags. |
 
-Only add components under **page/** or **ui/**. Put shell chrome in **`shell/`** only. Icon template shims live under **`src/build/lightning-icon/shims/`**; do not add other files there. Do not add a **`lightning/`** folder under **`src/modules`** for custom components.
+Only add components under **page/** or **ui/**. Put app-shell wiring in **`shell/`** only; reusable SLDS blueprint implementations belong in **`ui/`**. Icon template shims live under **`src/build/lightning-icon/shims/`**; do not add other files there. Do not add a **`lightning/`** folder under **`src/modules`** for custom components.
 
 **Examples:** Add `src/modules/page/dashboard/` → register in router and app, use as `page-dashboard` on e.g. `/dashboard`. Add `src/modules/ui/card/` → use in templates as `<ui-card>`.
 

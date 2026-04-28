@@ -9,8 +9,8 @@ This repository is a **starter template** for prototyping Salesforce-aligned UIs
 ### Where to put code
 
 - **Route-level views**: `src/modules/page/<name>/` → tag `page-<name>`. Add a route in `src/routes.config.js`, then import and register the component in `src/modules/shell/app/app.js` (`ROUTE_COMPONENTS`). The router picks up new routes automatically; `src/router.js` does not need editing.
-- **Reusable UI**: `src/modules/ui/<name>/` → tag `ui-<name>`. Use inside pages or other components.
-- **App shell**: `src/modules/shell/<name>/` → tag `shell-`*. Root app, layout, header, nav, theme, not route views (`page-`*) and not generic reusable widgets (`ui-*`).
+- **Reusable UI / SLDS blueprints**: `src/modules/ui/<name>/` → tag `ui-<name>`. Use inside pages, the shell, or other components.
+- **App shell**: `src/modules/shell/<name>/` → tag `shell-`*. Root app, layout, theme, docked panels — not route views (`page-`*) and not reusable components  (`ui-*`).
 - **Do not** add components under `src/build/lightning-icon/shims/` except the checked-in icon overrides, or under `src/modules/lightning/`.
 
 ### SLDS linter
