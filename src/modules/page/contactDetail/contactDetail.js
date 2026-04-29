@@ -2,6 +2,18 @@ import { LightningElement } from 'lwc';
 import { getCurrentRoute, navigate } from '../../../router';
 import { getContactById } from 'data/contacts';
 
+const DETAIL_FIELDS = [
+    { key: 'name', label: 'Full Name', fieldName: 'name' },
+    { key: 'company', label: 'Account Name', fieldName: 'company' },
+    { key: 'title', label: 'Title', fieldName: 'title' },
+    { key: 'department', label: 'Department', fieldName: 'department' },
+    { key: 'email', label: 'Email', fieldName: 'email', type: 'email' },
+    { key: 'phone', label: 'Phone', fieldName: 'phone', type: 'tel' },
+    { key: 'mobile', label: 'Mobile', fieldName: 'mobile', type: 'tel' },
+    { key: 'mailingAddress', label: 'Mailing Address', fieldName: 'mailingAddress' },
+    { key: 'description', label: 'Description', fieldName: 'description', component: 'textarea', fullWidth: true }
+];
+
 const ACTIVITY_ITEMS = [
     { id: 'a1', type: 'call', iconName: 'standard:log_a_call', subject: 'Follow-up call', date: '3 days ago', description: 'Discussed renewal timeline and next steps.' },
     { id: 'a2', type: 'email', iconName: 'standard:email', subject: 'Proposal sent', date: '1 week ago', description: 'Sent updated pricing proposal via email.' },
@@ -24,6 +36,18 @@ export default class ContactDetail extends LightningElement {
 
     get hasContact() {
         return this.contact !== null;
+    }
+
+    get cardFields() {
+        if (!this.contact) return [];
+        return DETAIL_FIELDS.map(field => ({
+            ...field,
+            value: field.fieldName === 'mailingAddress'
+                ? this.mailingAddress
+                : this.contact[field.fieldName],
+            isTextarea: field.component === 'textarea',
+            cssClass: field.fullWidth ? 'c-contact-details-grid__full-width' : ''
+        }));
     }
 
     get contactName() {
