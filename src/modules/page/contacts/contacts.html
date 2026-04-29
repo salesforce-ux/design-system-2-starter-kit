@@ -1,122 +1,41 @@
 <template>
     <div class="slds-container_x-large slds-container_center slds-p-horizontal_large">
-        <div class="slds-page-header">
-            <div class="slds-page-header__row">
-                <div class="slds-page-header__col-title">
-                    <div class="slds-media">
-                        <div class="slds-media__figure">
-                            <lightning-icon icon-name="standard:contact" size="medium"></lightning-icon>
-                        </div>
-                        <div class="slds-media__body">
-                            <div class="slds-page-header__name">
-                                <div class="slds-page-header__name-title">
-                                    <h1>
-                                        <span>Contacts</span>
-                                        <span class="slds-page-header__title slds-truncate" title="All Contacts">All Contacts</span>
-                                    </h1>
-                                </div>
-                                <div class="slds-page-header__name-switcher slds-is-relative slds-m-bottom_x-small">
-                                    <lightning-button-icon
-                                        icon-name="utility:down"
-                                        variant="bare"
-                                        size="small"
-                                        alternative-text="Switch list view"
-                                        title="Switch list view">
-                                    </lightning-button-icon>
-                                </div>
-                            </div>
-                        </div>
+        <ui-page-header
+            variant="object-home"
+            icon-name="standard:contact"
+            object-label="Contacts"
+            title="All Contacts"
+            meta-text={metaText}>
+            <lightning-button-icon
+                slot="switcher"
+                icon-name="utility:down"
+                variant="bare"
+                size="small"
+                alternative-text="Switch list view"
+                title="Switch list view">
+            </lightning-button-icon>
+            <div slot="actions">
+                <div class="slds-page-header__controls">
+                    <div class="slds-page-header__control">
+                        <lightning-button-group>
+                            <lightning-button label="New" variant="neutral"></lightning-button>
+                            <lightning-button label="Import" variant="neutral"></lightning-button>
+                            <lightning-button label="Add to Campaign" variant="neutral"></lightning-button>
+                            <lightning-button label="Send Email" variant="neutral"></lightning-button>
+                        </lightning-button-group>
                     </div>
-                </div>
-                <div class="slds-page-header__col-actions">
-                    <div class="slds-page-header__controls">
-                        <div class="slds-page-header__control">
-                            <lightning-button-group>
-                                <lightning-button label="New" variant="neutral"></lightning-button>
-                                <lightning-button label="Import" variant="neutral"></lightning-button>
-                                <lightning-button label="Add to Campaign" variant="neutral"></lightning-button>
-                                <lightning-button label="Send Email" variant="neutral"></lightning-button>
-                            </lightning-button-group>
-                        </div>
-                        <div class="slds-page-header__control">
-                            <lightning-button-menu
-                                alternative-text="More Actions"
-                                variant="border-filled"
-                                icon-size="medium"
-                                menu-alignment="right">
-                                <lightning-menu-item label="Printable View" value="printable"></lightning-menu-item>
-                            </lightning-button-menu>
-                        </div>
+                    <div class="slds-page-header__control">
+                        <lightning-button-menu
+                            alternative-text="More Actions"
+                            variant="border-filled"
+                            icon-size="medium"
+                            menu-alignment="right">
+                            <lightning-menu-item label="Printable View" value="printable"></lightning-menu-item>
+                        </lightning-button-menu>
                     </div>
                 </div>
             </div>
-            <div class="slds-page-header__row">
-                <div class="slds-page-header__col-meta">
-                    <p class="slds-page-header__meta-text">{metaText}</p>
-                </div>
-                <div class="slds-page-header__col-controls">
-                    <div class="slds-page-header__controls">
-                        <div class="slds-page-header__control">
-                            <lightning-input
-                                type="search"
-                                label="Search contacts"
-                                variant="label-hidden"
-                                placeholder="Search this list..."
-                                onchange={handleSearch}>
-                            </lightning-input>
-                        </div>
-                        <div class="slds-page-header__control">
-                            <lightning-button-icon
-                                icon-name="utility:settings"
-                                variant="border-filled"
-                                alternative-text="List View Controls"
-                                title="List View Controls">
-                            </lightning-button-icon>
-                        </div>
-                        <div class="slds-page-header__control">
-                            <lightning-button-icon
-                                icon-name="utility:table"
-                                variant="border-filled"
-                                alternative-text="Change view"
-                                title="Change view">
-                            </lightning-button-icon>
-                        </div>
-                        <div class="slds-page-header__control">
-                            <lightning-button-icon
-                                icon-name="utility:edit"
-                                variant="border-filled"
-                                alternative-text="Edit List"
-                                title="Edit List">
-                            </lightning-button-icon>
-                        </div>
-                        <div class="slds-page-header__control">
-                            <lightning-button-icon
-                                icon-name="utility:refresh"
-                                variant="border-filled"
-                                alternative-text="Refresh List"
-                                title="Refresh List">
-                            </lightning-button-icon>
-                        </div>
-                        <div class="slds-page-header__control">
-                            <lightning-button-group>
-                                <lightning-button-icon
-                                    icon-name="utility:chart"
-                                    variant="border-filled"
-                                    alternative-text="Charts"
-                                    title="Charts">
-                                </lightning-button-icon>
-                                <lightning-button-icon
-                                    icon-name="utility:filterList"
-                                    variant="border-filled"
-                                    alternative-text="Filters"
-                                    title="Filters">
-                                </lightning-button-icon>
-                            </lightning-button-group>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </ui-page-header>
 
         <lightning-datatable
             key-field="id"

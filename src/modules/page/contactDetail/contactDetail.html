@@ -1,82 +1,41 @@
 <template>
     <div class="slds-p-horizontal_large">
     <template lwc:if={hasContact}>
-        <!-- Record Page Header -->
-        <div class="slds-page-header slds-page-header_record-home">
-            <div class="slds-page-header__row">
-                <div class="slds-page-header__col-title">
-                    <div class="slds-media">
-                        <div class="slds-media__figure">
-                            <lightning-icon icon-name="standard:contact" size="medium"></lightning-icon>
-                        </div>
-                        <div class="slds-media__body">
-                            <div class="slds-page-header__name">
-                                <div class="slds-page-header__name-title">
-                                    <h1>
-                                        <span>Contact</span>
-                                        <span class="slds-page-header__title slds-truncate" title={contactName}>{contactName}</span>
-                                    </h1>
-                                </div>
-                            </div>
-                        </div>
+        <ui-page-header
+            variant="record-home"
+            icon-name="standard:contact"
+            object-label="Contact"
+            title={contactName}
+            fields={detailFields}>
+            <div slot="actions">
+                <div class="slds-page-header__controls">
+                    <div class="slds-page-header__control">
+                        <lightning-button
+                            label={followLabel}
+                            variant={followVariant}
+                            icon-name={followIconName}
+                            onclick={handleFollow}>
+                        </lightning-button>
                     </div>
-                </div>
-                <div class="slds-page-header__col-actions">
-                    <div class="slds-page-header__controls">
-                        <div class="slds-page-header__control">
-                            <lightning-button
-                                label={followLabel}
-                                variant={followVariant}
-                                icon-name={followIconName}
-                                onclick={handleFollow}>
-                            </lightning-button>
-                        </div>
-                        <div class="slds-page-header__control">
-                            <lightning-button-group>
-                                <lightning-button label="Edit" variant="neutral"></lightning-button>
-                                <lightning-button label="Delete" variant="neutral"></lightning-button>
-                                <lightning-button label="Clone" variant="neutral"></lightning-button>
-                                <lightning-button-menu
-                                    alternative-text="More Actions"
-                                    variant="border-filled"
-                                    icon-size="medium"
-                                    menu-alignment="right">
-                                    <lightning-menu-item label="Send Email" value="send_email"></lightning-menu-item>
-                                    <lightning-menu-item label="Log a Call" value="log_call"></lightning-menu-item>
-                                    <lightning-menu-item label="Create Task" value="create_task"></lightning-menu-item>
-                                </lightning-button-menu>
-                            </lightning-button-group>
-                        </div>
+                    <div class="slds-page-header__control">
+                        <lightning-button-group>
+                            <lightning-button label="Edit" variant="neutral"></lightning-button>
+                            <lightning-button label="Delete" variant="neutral"></lightning-button>
+                            <lightning-button label="Clone" variant="neutral"></lightning-button>
+                            <lightning-button-menu
+                                alternative-text="More Actions"
+                                variant="border-filled"
+                                icon-size="medium"
+                                menu-alignment="right">
+                                <lightning-menu-item label="Send Email" value="send_email"></lightning-menu-item>
+                                <lightning-menu-item label="Log a Call" value="log_call"></lightning-menu-item>
+                                <lightning-menu-item label="Create Task" value="create_task"></lightning-menu-item>
+                            </lightning-button-menu>
+                        </lightning-button-group>
                     </div>
                 </div>
             </div>
-            <div class="slds-page-header__row slds-page-header__row_gutters">
-                <div class="slds-page-header__col-details">
-                    <ul class="slds-page-header__detail-row">
-                        <li class="slds-page-header__detail-block">
-                            <div class="slds-text-title slds-truncate" title="Company">Company</div>
-                            <div class="slds-truncate" title={contact.company}>{contact.company}</div>
-                        </li>
-                        <li class="slds-page-header__detail-block">
-                            <div class="slds-text-title slds-truncate" title="Title">Title</div>
-                            <div class="slds-truncate" title={contact.title}>{contact.title}</div>
-                        </li>
-                        <li class="slds-page-header__detail-block">
-                            <div class="slds-text-title slds-truncate" title="Email">Email</div>
-                            <div class="slds-truncate" title={contact.email}>
-                                <lightning-formatted-email value={contact.email}></lightning-formatted-email>
-                            </div>
-                        </li>
-                        <li class="slds-page-header__detail-block">
-                            <div class="slds-text-title slds-truncate" title="Phone">Phone</div>
-                            <div class="slds-truncate" title={contact.phone}>
-                                <lightning-formatted-phone value={contact.phone}></lightning-formatted-phone>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        </ui-page-header>
 
         <!-- Body: 2/3 Details + 1/3 Activity -->
         <div class="slds-grid slds-gutters slds-m-top_medium">

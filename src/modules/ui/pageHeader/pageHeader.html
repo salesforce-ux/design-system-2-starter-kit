@@ -1,0 +1,179 @@
+<template>
+    <div class={computedHeaderClass} aria-label={label}>
+
+        <!-- Breadcrumbs (related-list only) -->
+        <template lwc:if={showBreadcrumbs}>
+            <div class="slds-page-header__row">
+                <div class="slds-page-header__col-title">
+                    <lightning-breadcrumbs>
+                        <template for:each={breadcrumbs} for:item="crumb">
+                            <lightning-breadcrumb
+                                key={crumb.href}
+                                label={crumb.label}
+                                href={crumb.href}>
+                            </lightning-breadcrumb>
+                        </template>
+                    </lightning-breadcrumbs>
+                </div>
+            </div>
+        </template>
+
+        <!-- Row 1: Icon + Title + Actions -->
+        <div class="slds-page-header__row">
+            <div class="slds-page-header__col-title">
+                <div class="slds-media">
+                    <template lwc:if={showIcon}>
+                        <div class="slds-media__figure">
+                            <lightning-icon
+                                icon-name={iconName}
+                                size="medium">
+                            </lightning-icon>
+                        </div>
+                    </template>
+                    <div class="slds-media__body">
+                        <div class="slds-page-header__name">
+                            <div class="slds-page-header__name-title">
+                                <h1>
+                                    <template lwc:if={hasObjectLabel}>
+                                        <span>{objectLabel}</span>
+                                    </template>
+                                    <span class="slds-page-header__title slds-truncate" title={title}>{title}</span>
+                                </h1>
+                            </div>
+                            <template lwc:if={showSwitcher}>
+                                <div class="slds-page-header__name-switcher slds-is-relative slds-m-bottom_x-small">
+                                    <slot name="switcher"></slot>
+                                </div>
+                            </template>
+                        </div>
+                        <template lwc:if={showBaseMeta}>
+                            <p class="slds-page-header__name-meta">{metaText}</p>
+                        </template>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-page-header__col-actions">
+                <div class="slds-page-header__controls">
+                    <div class="slds-page-header__control">
+                        <slot name="actions"></slot>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 2: Meta + Controls (object-home, related-list) -->
+        <template lwc:if={showMetaRow}>
+            <div class="slds-page-header__row">
+                <div class="slds-page-header__col-meta">
+                    <slot name="meta">
+                        <template lwc:if={metaText}>
+                            <p class="slds-page-header__meta-text">{metaText}</p>
+                        </template>
+                    </slot>
+                </div>
+                <div class="slds-page-header__col-controls">
+                    <div class="slds-page-header__controls">
+                        <template lwc:if={isObjectHome}>
+                            <div class="slds-page-header__control">
+                                <lightning-button-icon
+                                    icon-name="utility:settings"
+                                    variant="border-filled"
+                                    alternative-text="List View Controls"
+                                    title="List View Controls">
+                                </lightning-button-icon>
+                            </div>
+                            <div class="slds-page-header__control">
+                                <lightning-button-icon
+                                    icon-name="utility:table"
+                                    variant="border-filled"
+                                    alternative-text="Change view"
+                                    title="Change view">
+                                </lightning-button-icon>
+                            </div>
+                            <div class="slds-page-header__control">
+                                <lightning-button-icon
+                                    icon-name="utility:edit"
+                                    variant="border-filled"
+                                    alternative-text="Edit List"
+                                    title="Edit List">
+                                </lightning-button-icon>
+                            </div>
+                            <div class="slds-page-header__control">
+                                <lightning-button-icon
+                                    icon-name="utility:refresh"
+                                    variant="border-filled"
+                                    alternative-text="Refresh List"
+                                    title="Refresh List">
+                                </lightning-button-icon>
+                            </div>
+                            <div class="slds-page-header__control">
+                                <lightning-button-group>
+                                    <lightning-button-icon
+                                        icon-name="utility:chart"
+                                        variant="border-filled"
+                                        alternative-text="Charts"
+                                        title="Charts">
+                                    </lightning-button-icon>
+                                    <lightning-button-icon
+                                        icon-name="utility:filterList"
+                                        variant="border-filled"
+                                        alternative-text="Filters"
+                                        title="Filters">
+                                    </lightning-button-icon>
+                                </lightning-button-group>
+                            </div>
+                        </template>
+                        <template lwc:if={isRelatedList}>
+                            <div class="slds-page-header__control">
+                                <lightning-button-icon
+                                    icon-name="utility:table"
+                                    variant="border"
+                                    alternative-text="Change view"
+                                    title="Change view">
+                                </lightning-button-icon>
+                            </div>
+                            <div class="slds-page-header__control">
+                                <lightning-button-group>
+                                    <lightning-button-icon
+                                        icon-name="utility:chart"
+                                        variant="border"
+                                        alternative-text="Chart"
+                                        title="Chart">
+                                    </lightning-button-icon>
+                                    <lightning-button-icon
+                                        icon-name="utility:filterList"
+                                        variant="border"
+                                        alternative-text="Filter List"
+                                        title="Filter List">
+                                    </lightning-button-icon>
+                                </lightning-button-group>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!-- Row 3: Detail fields (record-home only) -->
+        <template lwc:if={showDetailsRow}>
+            <div class="slds-page-header__row slds-page-header__row_gutters">
+                <div class="slds-page-header__col-details">
+                    <ul class="slds-page-header__detail-row">
+                        <template for:each={normalizedFields} for:item="field">
+                            <li key={field.key} class="slds-page-header__detail-block">
+                                <lightning-input
+                                    label={field.label}
+                                    value={field.value}
+                                    type={field.type}
+                                    read-only
+                                    variant="label-stacked">
+                                </lightning-input>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+            </div>
+        </template>
+
+    </div>
+</template>

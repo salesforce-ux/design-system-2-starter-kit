@@ -30,6 +30,16 @@ export default class ContactDetail extends LightningElement {
         return this.contact?.name || 'Unknown Contact';
     }
 
+    get detailFields() {
+        if (!this.contact) return [];
+        return [
+            { label: 'Company', value: this.contact.company },
+            { label: 'Title', value: this.contact.title },
+            { label: 'Email', value: this.contact.email, type: 'email' },
+            { label: 'Phone', value: this.contact.phone, type: 'tel' }
+        ];
+    }
+
     get mailingAddress() {
         if (!this.contact) return '';
         const c = this.contact;
