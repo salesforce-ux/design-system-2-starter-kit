@@ -42,75 +42,16 @@
             <!-- Left 2/3: Details Card -->
             <div class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12">
                 <lightning-card title="Contact Details">
-                    <div class="slds-p-horizontal_small slds-p-bottom_small">
-                        <div class="slds-grid slds-wrap slds-gutters_small">
-                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
-                                <lightning-input
-                                    label="Full Name"
-                                    value={contact.name}
-                                    read-only>
-                                </lightning-input>
-                            </div>
-                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
-                                <lightning-input
-                                    label="Account Name"
-                                    value={contact.company}
-                                    read-only>
-                                </lightning-input>
-                            </div>
-                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
-                                <lightning-input
-                                    label="Title"
-                                    value={contact.title}
-                                    read-only>
-                                </lightning-input>
-                            </div>
-                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
-                                <lightning-input
-                                    label="Department"
-                                    value={contact.department}
-                                    read-only>
-                                </lightning-input>
-                            </div>
-                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
-                                <lightning-input
-                                    label="Email"
-                                    value={contact.email}
-                                    type="email"
-                                    read-only>
-                                </lightning-input>
-                            </div>
-                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
-                                <lightning-input
-                                    label="Phone"
-                                    value={contact.phone}
-                                    type="tel"
-                                    read-only>
-                                </lightning-input>
-                            </div>
-                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
-                                <lightning-input
-                                    label="Mobile"
-                                    value={contact.mobile}
-                                    type="tel"
-                                    read-only>
-                                </lightning-input>
-                            </div>
-                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
-                                <lightning-input
-                                    label="Mailing Address"
-                                    value={mailingAddress}
-                                    read-only>
-                                </lightning-input>
-                            </div>
-                            <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
-                                <lightning-textarea
-                                    label="Description"
-                                    value={contact.description}
-                                    read-only>
-                                </lightning-textarea>
-                            </div>
-                        </div>
+                    <div class="c-contact-details-grid">
+                        <lightning-input label="Full Name" value={contact.name} read-only></lightning-input>
+                        <lightning-input label="Account Name" value={contact.company} read-only></lightning-input>
+                        <lightning-input label="Title" value={contact.title} read-only></lightning-input>
+                        <lightning-input label="Department" value={contact.department} read-only></lightning-input>
+                        <lightning-input label="Email" value={contact.email} type="email" read-only></lightning-input>
+                        <lightning-input label="Phone" value={contact.phone} type="tel" read-only></lightning-input>
+                        <lightning-input label="Mobile" value={contact.mobile} type="tel" read-only></lightning-input>
+                        <lightning-input label="Mailing Address" value={mailingAddress} read-only></lightning-input>
+                        <lightning-textarea class="c-contact-details-grid__full-width" label="Description" value={contact.description} read-only></lightning-textarea>
                     </div>
                 </lightning-card>
             </div>
