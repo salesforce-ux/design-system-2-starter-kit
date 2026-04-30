@@ -1,0 +1,26 @@
+#app {
+    opacity: 0;
+}
+
+#app.is-ready {
+    opacity: 1;
+}
+
+#app-loading {
+    display: none;
+    position: fixed;
+    inset: 0;
+    place-items: center;
+    font: 500 .875rem/1 system-ui, sans-serif;
+    color: oklch(60% 0 0);
+    animation: app-loading-fade-in .5s ease-in forwards;
+}
+
+#app:not(.is-ready) ~ #app-loading {
+    display: grid;
+}
+
+@keyframes app-loading-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
