@@ -10,7 +10,7 @@
             aria-expanded={isCardOpen}
             onclick={handleIconClick}>
         </lightning-button-icon>
-        <template if:true={showCard}>
+        <template lwc:if={showCard}>
             <div class={cardWrapperClass} onanimationend={handleCardWrapperAnimationEnd}>
                 <lightning-card title="Theme" class="theme-switcher-card">
                     <div class="slds-p-around_small">
@@ -21,7 +21,7 @@
                                 icon-name="utility:palette"
                                 onclick={handleToggleSLDSClick}>
                             </lightning-button>
-                            <template if:true={showDarkModeButton}>
+                            <template lwc:if={showDarkModeButton}>
                                 <lightning-button
                                     class="slds-m-left_small"
                                     variant="neutral"

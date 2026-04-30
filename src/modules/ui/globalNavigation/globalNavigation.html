@@ -15,7 +15,7 @@
                     class="slds-dropdown slds-dropdown_left"
                     role="menu"
                     aria-label="App Launcher"
-                    if:true={isWaffleMenuOpen}
+                    lwc:if={isWaffleMenuOpen}
                     onkeydown={handleWaffleMenuKeydown}>
                     <ul class="slds-dropdown__list" role="group">
                         <template for:each={appItemsWithCurrent} for:item="item">
@@ -59,7 +59,7 @@
                     </lightning-button-icon>
                     <div
                         class="slds-dropdown slds-dropdown_left"
-                        if:true={isObjectSwitcherOpen}
+                        lwc:if={isObjectSwitcherOpen}
                         onkeydown={handleObjectSwitcherKeydown}>
                         <div
                             class="slds-dropdown__list"
@@ -90,7 +90,7 @@
                                 aria-current={item.ariaCurrent}
                                 data-page={item.page}
                                 onclick={handleNavItemClick}>
-                                <span class="slds-assistive-text" if:true={item.isActive}>Current Page:</span>
+                                <span class="slds-assistive-text" lwc:if={item.isActive}>Current Page:</span>
                                 <span class="slds-truncate" title={item.label}>{item.label}</span>
                             </a>
                         </li>
