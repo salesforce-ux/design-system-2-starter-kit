@@ -64,7 +64,7 @@ export default class PageHeader extends LightningElement {
     }
 
     get hasObjectLabel() {
-        return !!this.objectLabel;
+        return !!this.objectLabel && !this.showBreadcrumbs;
     }
 
     get isBase() {
@@ -100,7 +100,11 @@ export default class PageHeader extends LightningElement {
     }
 
     get showBreadcrumbs() {
-        return this.isRelatedList && this._breadcrumbs.length > 0;
+        return this._breadcrumbs.length > 0;
+    }
+
+    get showActions() {
+        return !this.isBase;
     }
 
     get showSwitcher() {

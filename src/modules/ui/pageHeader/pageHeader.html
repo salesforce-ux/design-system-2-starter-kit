@@ -1,10 +1,10 @@
 <template>
     <div class={computedHeaderClass} aria-label={label}>
 
-        <!-- Breadcrumbs (related-list only) -->
-        <template lwc:if={showBreadcrumbs}>
-            <div class="slds-page-header__row">
-                <div class="slds-page-header__col-title">
+        <!-- Row 1: Icon + Title + Actions -->
+        <div class="slds-page-header__row">
+            <div class="slds-page-header__col-title">
+                <template lwc:if={showBreadcrumbs}>
                     <lightning-breadcrumbs>
                         <template for:each={breadcrumbs} for:item="crumb">
                             <lightning-breadcrumb
@@ -14,13 +14,7 @@
                             </lightning-breadcrumb>
                         </template>
                     </lightning-breadcrumbs>
-                </div>
-            </div>
-        </template>
-
-        <!-- Row 1: Icon + Title + Actions -->
-        <div class="slds-page-header__row">
-            <div class="slds-page-header__col-title">
+                </template>
                 <div class="slds-media">
                     <template lwc:if={showIcon}>
                         <div class="slds-media__figure">
@@ -53,13 +47,15 @@
                     </div>
                 </div>
             </div>
-            <div class="slds-page-header__col-actions">
-                <div class="slds-page-header__controls">
-                    <div class="slds-page-header__control">
-                        <slot name="actions"></slot>
+            <template lwc:if={showActions}>
+                <div class="slds-page-header__col-actions">
+                    <div class="slds-page-header__controls">
+                        <div class="slds-page-header__control">
+                            <slot name="actions"></slot>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </template>
         </div>
 
         <!-- Row 2: Meta + Controls (object-home, related-list) -->
@@ -137,7 +133,7 @@
                             <div class="slds-page-header__control">
                                 <lightning-button-icon
                                     icon-name="utility:table"
-                                    variant="border"
+                                    variant="border-filled"
                                     alternative-text="Change view"
                                     title="Change view">
                                 </lightning-button-icon>
@@ -146,13 +142,13 @@
                                 <lightning-button-group>
                                     <lightning-button-icon
                                         icon-name="utility:chart"
-                                        variant="border"
+                                        variant="border-filled"
                                         alternative-text="Chart"
                                         title="Chart">
                                     </lightning-button-icon>
                                     <lightning-button-icon
                                         icon-name="utility:filterList"
-                                        variant="border"
+                                        variant="border-filled"
                                         alternative-text="Filter List"
                                         title="Filter List">
                                     </lightning-button-icon>
