@@ -29,11 +29,12 @@ function getLink(key) {
     return document.querySelector(`link[data-slds="${key}"]`);
 }
 
-function ensureLink(key, href) {
+function ensureLink(key, href, media = 'not all') {
     let link = getLink(key);
     if (!link) {
         link = document.createElement('link');
         link.rel = 'stylesheet';
+        link.media = media;
         link.setAttribute('data-slds', key);
         link.href = href;
         document.head.appendChild(link);
@@ -59,15 +60,14 @@ export function ensureSlds1Loaded() {
  * Call from src/index.js before mounting LWC (top-level await).
  */
 export async function initSldsFromStorage() {
-    const slds2Link = ensureLink(SLDS2_KEY, slds2CssUrl);
-
     const saved = localStorage.getItem(STORAGE_KEY_SLDS_VERSION);
     if (saved === '1') {
+        const slds2Link = ensureLink(SLDS2_KEY, slds2CssUrl);
         const slds1Link = await ensureSlds1Loaded();
         slds1Link.media = 'all';
         slds2Link.media = 'not all';
     } else {
-        slds2Link.media = 'all';
+        ensureLink(SLDS2_KEY, slds2CssUrl, 'all');
     }
 }
 
@@ -106,4 +106,13 @@ export async function toggleSLDS() {
 export function activeSLDSVersion() {
     const slds2 = getLink(SLDS2_KEY);
     return slds2 && slds2.media !== 'not all' ? 2 : 1;
+}
+
+export function preloadSlds1() {
+    ensureSlds1Loaded();
+}
+
+export function activeSldsLink() {
+    const slds2 = getLink(SLDS2_KEY);
+    return slds2 && slds2.media !== 'not all' ? slds2 : getLink(SLDS1_KEY);
 }
