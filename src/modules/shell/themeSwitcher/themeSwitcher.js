@@ -1,4 +1,5 @@
 import { LightningElement, api } from 'lwc';
+import { preloadSlds1 } from '../../../build/slds-loader';
 
 export default class ThemeSwitcher extends LightningElement {
     @api sldsVersion = 2;
@@ -42,6 +43,7 @@ export default class ThemeSwitcher extends LightningElement {
             }, 0);
         } else {
             this.isCardOpen = true;
+            preloadSlds1();
             setTimeout(() => {
                 window.addEventListener('click', this._handleWindowClick);
             }, 0);
