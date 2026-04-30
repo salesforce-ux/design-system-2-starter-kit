@@ -66,7 +66,7 @@ export default class Contacts extends LightningElement {
     }
 
     handleSearch(event) {
-        this.searchTerm = event.target.value;
+        this.searchTerm = event.detail.value;
     }
 
     handleSort(event) {

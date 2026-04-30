@@ -26,7 +26,8 @@
                         <div class="slds-media__figure">
                             <lightning-icon
                                 icon-name={iconName}
-                                size="medium">
+                                size="medium"
+                                alternative-text={objectLabel}>
                             </lightning-icon>
                         </div>
                     </template>
@@ -74,6 +75,15 @@
                 <div class="slds-page-header__col-controls">
                     <div class="slds-page-header__controls">
                         <template lwc:if={isObjectHome}>
+                            <div class="slds-page-header__control">
+                                <lightning-input
+                                    type="search"
+                                    label={searchLabel}
+                                    variant="label-hidden"
+                                    placeholder="Search this list..."
+                                    onchange={handleSearchChange}>
+                                </lightning-input>
+                            </div>
                             <div class="slds-page-header__control">
                                 <lightning-button-icon
                                     icon-name="utility:settings"

@@ -107,6 +107,20 @@ export default class PageHeader extends LightningElement {
         return this.isObjectHome;
     }
 
+    get searchLabel() {
+        return `Search ${this.objectLabel || 'this list'}`;
+    }
+
+    handleSearchChange(event) {
+        this.dispatchEvent(
+            new CustomEvent('search', {
+                detail: { value: event.target.value },
+                bubbles: false,
+                composed: false,
+            })
+        );
+    }
+
     get normalizedFields() {
         return this._fields.map((f, i) => ({
             key: `field-${i}`,
