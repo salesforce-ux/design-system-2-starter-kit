@@ -62,6 +62,7 @@ export default defineConfig({
       enableDynamicComponents: true,
       exclude: [
         path.resolve('./index.html'),
+        /loading\.css/,
         path.resolve('./src/build/generated'),
         // Global SLDS from node_modules (new URL in slds-loader.js) must not pass through LWC:
         // LWC rejects :root in this pipeline when synthetic shadow is enabled.
