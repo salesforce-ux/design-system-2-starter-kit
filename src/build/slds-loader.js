@@ -13,7 +13,7 @@
  */
 
 const slds2CssUrl = new URL(
-    '../../node_modules/@salesforce-ux/design-system-2/dist/css/slds2.cosmos.css',
+    '../../node_modules/@salesforce-ux/design-system-2/dist/css/bundled/slds2.cosmos.css',
     import.meta.url
 ).href;
 
