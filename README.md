@@ -113,7 +113,7 @@ The app uses a small client-side router in `src/router.js`:
 - **@lwc/synthetic-shadow** — Synthetic shadow DOM (Salesforce-like)  
 - **lightning-base-components** — Salesforce component library  
 - **@salesforce-ux/design-system** — Classic SLDS; Vite bundles `assets/styles/salesforce-lightning-design-system.min.css` (and nested `url(...)` assets) when SLDS 1 is loaded  
-- **@salesforce-ux/design-system-2** — SLDS 2 / Cosmos; Vite bundles `dist/css/slds2.cosmos.css` for the default theme  
+- **@salesforce-ux/design-system-2** — SLDS 2 / Cosmos; Vite bundles `dist/css/bundled/slds2.cosmos.css` for the default theme  
 - **`public/images/`** (e.g. favicon `salesforce.svg`) stays in the repo as app-owned assets.
 
 ## SLDS 1 and SLDS 2
