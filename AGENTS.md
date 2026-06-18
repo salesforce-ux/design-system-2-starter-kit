@@ -26,6 +26,7 @@ Fix reported issues where possible. If something cannot be fixed, say so briefly
 ### Engineering habits
 
 - For UI work, **read `.agent/skills/afv-library/applying-slds/SKILL.md` first**.
+- **Prefer Lightning Base Components over hand-rolled SLDS markup.** When a `lightning-*` component exists for what you're building, use it instead of reconstructing the `slds-*` blueprint from memory (e.g. `lightning-card` not `slds-card`, `lightning-button` not `slds-button`, `lightning-icon` not `slds-icon`). Only hand-roll a blueprint when no base component covers the case, and say so when you do.
 - Prefer small, single-responsibility LWCs and readable structure.
 - Do not use `!important`.
 - Do not use inline `style` attributes; use utility classes or the component’s CSS file as appropriate.
