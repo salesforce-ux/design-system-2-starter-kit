@@ -1,0 +1,77 @@
+:host {
+    --tile-size: calc(var(--slds-g-sizing-9, 2rem) + var(--slds-g-sizing-2, 0.25rem));
+    --tile-box-size: calc(var(--tile-size) + var(--slds-g-sizing-3, 0.5rem));
+    display: block;
+    height: 100%;
+    background-color: var(--slds-g-color-brand-base-20, #e5e5e5);
+}
+
+.vertical-nav {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior-y: contain;
+    scrollbar-width: none;
+    width: var(--vertical-nav-width, 4.875rem);
+}
+
+.vertical-nav::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.vertical-nav__list {
+    list-style: none;
+    padding: var(--slds-g-spacing-3, 0.5rem);
+    padding-top: var(--slds-g-spacing-4, 1rem);
+    margin: 0;
+}
+
+.vertical-nav__item + .vertical-nav__item {
+    margin-top: var(--slds-g-spacing-2, 0.5rem);
+}
+
+.vertical-nav__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: var(--slds-g-color-on-accent-1, #fff);
+    border-radius: var(--slds-g-radius-border-2, 0.5rem);
+    padding: var(--slds-g-spacing-1, 0.25rem);
+}
+
+.vertical-nav__link:hover,
+.vertical-nav__link:focus {
+    outline: none;
+}
+
+.vertical-nav__tile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--tile-box-size);
+    width: var(--tile-box-size);
+    border-radius: var(--slds-g-radius-border-2, 0.5rem);
+    border: var(--slds-g-sizing-border-2, 2px) solid transparent;
+    transition: outline 0.1s ease;
+}
+
+.vertical-nav__link:hover .vertical-nav__tile,
+.vertical-nav__link:focus .vertical-nav__tile {
+    outline-style: solid;
+    outline-width: var(--slds-g-sizing-border-2, 2px);
+    outline-color: var(--slds-g-color-border-inverse-1, #f3f3f3);
+}
+
+.vertical-nav__link_selected .vertical-nav__tile {
+    border-color: var(--slds-g-color-border-inverse-1, #f3f3f3);
+}
+
+.vertical-nav__label {
+    font-size: var(--slds-g-font-scale-neg-2, 0.75rem);
+    font-weight: var(--slds-g-font-weight-6, 600);
+    padding-top: var(--slds-g-spacing-1, 0.25rem);
+    overflow-wrap: anywhere;
+}

@@ -1,0 +1,26 @@
+<template>
+    <nav class="vertical-nav" role="navigation" aria-label="App navigation">
+        <ul class="vertical-nav__list">
+            <template for:each={items} for:item="item">
+                <li key={item.id} class="vertical-nav__item">
+                    <a
+                        class={item.itemClass}
+                        href={item.href}
+                        aria-current={item.ariaCurrent}
+                        data-app={item.id}
+                        onclick={handleClick}>
+                        <span class="vertical-nav__tile">
+                            <lightning-icon
+                                icon-name={item.icon}
+                                size="small"
+                                variant="inverse"
+                                alternative-text="">
+                            </lightning-icon>
+                        </span>
+                        <span class="vertical-nav__label">{item.label}</span>
+                    </a>
+                </li>
+            </template>
+        </ul>
+    </nav>
+</template>

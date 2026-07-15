@@ -1,7 +1,12 @@
 <template>
     <lightning-layout class="global-shell" multiple-rows>
         <lightning-layout-item size="12" padding="none">
-            <ui-global-header onpanelselect={handlePanelSelect}></ui-global-header>
+            <ui-global-header
+                color-mode={colorMode}
+                slds-version={sldsVersion}
+                vertical-nav={verticalNav}
+                onpanelselect={handlePanelSelect}>
+            </ui-global-header>
         </lightning-layout-item>
         <lightning-layout-item size="12" padding="none">
             <ui-global-navigation
@@ -10,6 +15,7 @@
                 nav-items={navItems}
                 app-items={appItems}
                 pages-in-current-app={pagesInCurrentApp}
+                hide-waffle={hideWaffle}
                 onnavigate={handleNavigate}
                 onappswitch={handleAppSwitch}>
             </ui-global-navigation>

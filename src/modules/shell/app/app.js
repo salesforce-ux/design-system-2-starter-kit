@@ -41,11 +41,18 @@ const NAV_PAGE_TO_ROUTE = Object.fromEntries(
 );
 
 const STORAGE_KEY_DARK_MODE = 'slds-ui-dark-mode';
+const STORAGE_KEY_COLOR_MODE = 'slds-ui-color-mode';
+const STORAGE_KEY_VERTICAL_NAV = 'slds-ui-vertical-nav';
+const COLOR_MODES = new Set(['light', 'dark', 'system']);
+const SYSTEM_DARK_QUERY = '(prefers-color-scheme: dark)';
 
 export default class App extends LightningElement {
     route;
     _sldsVersion = 2;
-    _darkMode = false;
+    _colorMode = 'light';
+    _verticalNav = false;
+    _systemColorSchemeMediaQuery = null;
+    _handleSystemColorSchemeChange = null;
     _currentApp = getPersistedAppId() || DEFAULT_APP_ID;
     selectedPanel = 'agentforce_panel';
     isPanelOpen = false;
@@ -72,6 +79,14 @@ export default class App extends LightningElement {
 
     get isBuilderApp() {
         return this.currentAppVariant === 'builder';
+    }
+
+    get isVerticalNavOn() {
+        return this._verticalNav;
+    }
+
+    get rootClass() {
+        return this.isVerticalNavOn ? 'app-root app-root_with-vertical-nav' : 'app-root';
     }
 
     /** Pages exposed in the current app's primary nav (Standard tabs). */
@@ -105,6 +120,7 @@ export default class App extends LightningElement {
         return apps.map((a) => ({
             id: a.id,
             label: a.label,
+            icon: a.icon,
             href: linkHref(a.defaultPath, a.id),
             isCurrent: a.id === this._currentApp,
         }));
@@ -132,37 +148,88 @@ export default class App extends LightningElement {
 
     _restorePreferences() {
         const savedVersion = localStorage.getItem(STORAGE_KEY_SLDS_VERSION);
+        const savedColorMode = localStorage.getItem(STORAGE_KEY_COLOR_MODE);
         const savedDarkMode = localStorage.getItem(STORAGE_KEY_DARK_MODE);
+        const savedVerticalNav = localStorage.getItem(STORAGE_KEY_VERTICAL_NAV);
         const version = savedVersion === '1' ? 1 : 2;
-        if (savedDarkMode === 'true' && version === 2) {
-            this._darkMode = true;
-            document.body.classList.add('slds-color-scheme_dark');
+        let colorMode = 'light';
+        if (savedColorMode && COLOR_MODES.has(savedColorMode)) {
+            colorMode = savedColorMode;
+        } else if (savedDarkMode === 'true') {
+            colorMode = 'dark';
+            localStorage.setItem(STORAGE_KEY_COLOR_MODE, colorMode);
+            localStorage.removeItem(STORAGE_KEY_DARK_MODE);
         } else if (savedDarkMode === 'false') {
-            this._darkMode = false;
-            document.body.classList.remove('slds-color-scheme_dark');
+            colorMode = 'light';
+            localStorage.setItem(STORAGE_KEY_COLOR_MODE, colorMode);
+            localStorage.removeItem(STORAGE_KEY_DARK_MODE);
         }
+        if (version !== 2 && colorMode === 'dark') {
+            colorMode = 'light';
+        }
+        this._applyColorMode(colorMode);
+        this._verticalNav = savedVerticalNav === 'true';
+    }
+
+    _applyColorMode(colorMode) {
+        this._colorMode = colorMode;
+        this._unbindSystemColorScheme();
+        let effective = colorMode;
+        if (colorMode === 'system') {
+            const mq = window.matchMedia(SYSTEM_DARK_QUERY);
+            effective = mq.matches ? 'dark' : 'light';
+            this._handleSystemColorSchemeChange = (event) => {
+                document.body.classList.toggle('slds-color-scheme_dark', event.matches);
+            };
+            mq.addEventListener('change', this._handleSystemColorSchemeChange);
+            this._systemColorSchemeMediaQuery = mq;
+        }
+        document.body.classList.toggle('slds-color-scheme_dark', effective === 'dark');
+    }
+
+    _unbindSystemColorScheme() {
+        if (this._systemColorSchemeMediaQuery && this._handleSystemColorSchemeChange) {
+            this._systemColorSchemeMediaQuery.removeEventListener('change', this._handleSystemColorSchemeChange);
+        }
+        this._systemColorSchemeMediaQuery = null;
+        this._handleSystemColorSchemeChange = null;
     }
 
     disconnectedCallback() {
         this.unsubscribe?.();
         document.documentElement.classList.remove('builder-active');
+        this._unbindSystemColorScheme();
     }
 
-    async handleToggleSLDS() {
+    async _setSldsVersion(version) {
+        if (version === this._sldsVersion) return;
         await toggleSLDS();
         this._sldsVersion = activeSLDSVersion();
         localStorage.setItem(STORAGE_KEY_SLDS_VERSION, String(this._sldsVersion));
-        if (this._sldsVersion !== 2 && this._darkMode) {
-            this._darkMode = false;
-            document.body.classList.remove('slds-color-scheme_dark');
-            localStorage.setItem(STORAGE_KEY_DARK_MODE, 'false');
+        if (this._sldsVersion !== 2 && this._colorMode !== 'light') {
+            this._applyColorMode('light');
+            localStorage.setItem(STORAGE_KEY_COLOR_MODE, 'light');
         }
     }
 
-    handleToggleDarkMode() {
-        this._darkMode = !this._darkMode;
-        document.body.classList.toggle('slds-color-scheme_dark', this._darkMode);
-        localStorage.setItem(STORAGE_KEY_DARK_MODE, String(this._darkMode));
+    handleColorModeChange(event) {
+        const value = event.detail?.value;
+        if (!COLOR_MODES.has(value)) return;
+        if (value !== 'light' && this._sldsVersion !== 2) return;
+        this._applyColorMode(value);
+        localStorage.setItem(STORAGE_KEY_COLOR_MODE, value);
+    }
+
+    handleSldsVersionChange(event) {
+        const value = event.detail?.value;
+        if (value !== 1 && value !== 2) return;
+        this._setSldsVersion(value);
+    }
+
+    handleVerticalNavChange(event) {
+        const value = Boolean(event.detail?.value);
+        this._verticalNav = value;
+        localStorage.setItem(STORAGE_KEY_VERTICAL_NAV, String(this._verticalNav));
     }
 
     handleNavNavigate(event) {

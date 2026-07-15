@@ -4,41 +4,53 @@
     </template>
 
     <template lwc:else>
-    <!-- Global shell: top, edge to edge, height by content -->
-    <shell-global-shell
-        current-page={currentNavPage}
-        nav-items={navItems}
-        current-app-variant={currentAppVariant}
-        app-items={appItems}
-        pages-in-current-app={pagesInCurrentApp}
-        onnavigate={handleNavNavigate}
-        onappswitch={handleAppSwitch}
-        onpanelselect={handlePanelSelect}>
-    </shell-global-shell>
+    <div class={rootClass}>
+        <ui-vertical-nav
+            lwc:if={isVerticalNavOn}
+            class="app-root__vertical-nav slds-color-scheme_light"
+            app-items={appItems}
+            onappswitch={handleAppSwitch}>
+        </ui-vertical-nav>
 
-    <!-- Main content and docked panel -->
-    <main class="app-body">
-        <lightning-layout vertical-align="stretch" class="utility-full-height">
-            <lightning-layout-item flexibility="auto" class="app-body__content-cell">
-                <div class="app-body__scroll-wrapper">
-                    <div class="app-main">
-                        <div class="app-main__inner">
-                            <!-- Router outlet -->
-                            <lwc:component lwc:is={componentCtor} onnavigateback={handleNavigateBack}></lwc:component>
+        <div class="app-root__column">
+            <!-- Global shell: top, edge to edge, height by content -->
+            <shell-global-shell
+                current-page={currentNavPage}
+                nav-items={navItems}
+                current-app-variant={currentAppVariant}
+                app-items={appItems}
+                pages-in-current-app={pagesInCurrentApp}
+                hide-waffle={isVerticalNavOn}
+                color-mode={_colorMode}
+                slds-version={_sldsVersion}
+                vertical-nav={_verticalNav}
+                onnavigate={handleNavNavigate}
+                onappswitch={handleAppSwitch}
+                onpanelselect={handlePanelSelect}
+                oncolormodechange={handleColorModeChange}
+                onsldsversionchange={handleSldsVersionChange}
+                onverticalnavchange={handleVerticalNavChange}>
+            </shell-global-shell>
+
+            <!-- Main content and docked panel -->
+            <main class="app-body">
+                <lightning-layout vertical-align="stretch" class="utility-full-height">
+                    <lightning-layout-item flexibility="auto" class="app-body__content-cell">
+                        <div class="app-body__scroll-wrapper">
+                            <div class="app-main">
+                                <div class="app-main__inner">
+                                    <!-- Router outlet -->
+                                    <lwc:component lwc:is={componentCtor} onnavigateback={handleNavigateBack}></lwc:component>
+                                </div>
+                            </div>
                         </div>
-                        <shell-theme-switcher
-                            slds-version={_sldsVersion}
-                            dark-mode={_darkMode}
-                            ontoggleslds={handleToggleSLDS}
-                            ontoggledarkmode={handleToggleDarkMode}>
-                        </shell-theme-switcher>
-                    </div>
-                </div>
-            </lightning-layout-item>
-            <lightning-layout-item class={panelClasses}>
-                <shell-panel selected-panel={selectedPanel} onpanelclose={handlePanelClose}></shell-panel>
-            </lightning-layout-item>
-        </lightning-layout>
-    </main>
+                    </lightning-layout-item>
+                    <lightning-layout-item class={panelClasses}>
+                        <shell-panel selected-panel={selectedPanel} onpanelclose={handlePanelClose}></shell-panel>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </main>
+        </div>
+    </div>
     </template>
 </template>

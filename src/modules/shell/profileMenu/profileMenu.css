@@ -1,0 +1,37 @@
+.profile-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-menu__trigger {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    border-radius: var(--slds-g-radius-border-circle, 50%);
+    transition: box-shadow 0.15s ease;
+}
+
+.profile-menu__trigger lightning-avatar {
+    display: block;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+}
+
+.profile-menu__trigger:hover lightning-avatar {
+    opacity: 0.8;
+}
+
+.profile-menu__trigger:focus {
+    outline: none;
+    box-shadow: var(--slds-g-shadow-outset-focus-1, 0 0 3px var(--slds-g-color-accent-container-1, #0176d3));
+}
+
+.profile-menu__popover {
+    position: absolute;
+    top: 100%;
+    right: calc(var(--slds-g-spacing-2, 0.25rem) * -1);
+    margin-top: var(--slds-g-spacing-3, 0.5rem);
+    z-index: 9052;
+    min-width: var(--slds-g-sizing-15, 20rem);
+}

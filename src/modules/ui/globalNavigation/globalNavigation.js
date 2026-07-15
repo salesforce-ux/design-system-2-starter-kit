@@ -8,6 +8,7 @@ export default class GlobalNavigation extends LightningElement {
     @api appItems = [];
     @api pagesInCurrentApp = [];
     @api variant = 'standard';
+    @api hideWaffle = false;
 
     isWaffleMenuOpen = false;
     isObjectSwitcherOpen = false;
@@ -18,6 +19,11 @@ export default class GlobalNavigation extends LightningElement {
 
     get isStandard() {
         return !this.isConsole;
+    }
+
+    /** Waffle app-launcher trigger is hidden when the vertical nav rail replaces it. */
+    get showWaffle() {
+        return !this.hideWaffle;
     }
 
     get contextBarClass() {

@@ -53,14 +53,12 @@
                     </lightning-button-icon>
                 </lightning-layout-item>
                 <lightning-layout-item class="slds-p-left_small">
-                    <lightning-avatar
-                        size="medium"
-                        src="/images/avatar1.jpg"
-                        initials="AG"
-                        fallback-icon-name="standard:person_account"
-                        alternative-text="Austin Guevara"
-                        variant="circle"
-                        class="slds-m-right_small"></lightning-avatar></lightning-layout-item>
+                    <shell-profile-menu
+                        color-mode={colorMode}
+                        slds-version={sldsVersion}
+                        vertical-nav={verticalNav}>
+                    </shell-profile-menu>
+                </lightning-layout-item>
             </lightning-layout>
         </lightning-layout-item>
     </lightning-layout>

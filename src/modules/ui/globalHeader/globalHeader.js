@@ -1,6 +1,10 @@
-import { LightningElement } from 'lwc';
+import { LightningElement, api } from 'lwc';
 
 export default class GlobalHeader extends LightningElement {
+    @api colorMode = 'light';
+    @api sldsVersion = 2;
+    @api verticalNav = false;
+
     handleAgentforceClick() {
         this.dispatchEvent(new CustomEvent('panelselect', {
             detail: { name: 'agentforce_panel' },

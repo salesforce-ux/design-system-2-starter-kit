@@ -6,6 +6,10 @@ export default class GlobalShell extends LightningElement {
     @api currentAppVariant = 'standard';
     @api appItems = [];
     @api pagesInCurrentApp = [];
+    @api hideWaffle = false;
+    @api colorMode = 'light';
+    @api sldsVersion = 2;
+    @api verticalNav = false;
 
     handleNavigate(event) {
         // Prevent the original child event from continuing to bubble, then relay once.

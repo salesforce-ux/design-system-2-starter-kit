@@ -1,9 +1,20 @@
 lightning-card {
-    --slds-c-card-body-spacing-inline: var(--slds-g-spacing-var-inline-4);
+    --slds-c-card-body-spacing-inline: var(--slds-g-spacing-var-inline-4, 1rem);
 }
 
 .spinner-demo {
     height: 100px;
+}
+
+.popover-demo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--slds-g-spacing-8, 2rem);
+    align-items: flex-start;
+}
+
+.popover-demo ui-popover {
+    max-width: var(--slds-g-sizing-15, 20rem);
 }
 
 @media (min-width: 48em) {

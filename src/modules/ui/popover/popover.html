@@ -1,0 +1,29 @@
+<template>
+    <section
+        class={popoverClass}
+        role="dialog"
+        aria-label={label}>
+        <button
+            lwc:if={showClose}
+            class="slds-button slds-button_icon slds-button_icon-small slds-float_right slds-popover__close"
+            title="Close dialog"
+            onclick={handleClose}>
+            <lightning-icon
+                icon-name="utility:close"
+                variant={closeIconVariant}
+                size="xx-small"
+                alternative-text="Close dialog">
+            </lightning-icon>
+        </button>
+        <header lwc:if={hasHeader} class="slds-popover__header">
+            <h2 class="slds-text-heading_small">{label}</h2>
+            <slot name="header"></slot>
+        </header>
+        <div class={bodyClass}>
+            <slot></slot>
+        </div>
+        <footer lwc:if={hasFooter} class="slds-popover__footer">
+            <slot name="footer"></slot>
+        </footer>
+    </section>
+</template>

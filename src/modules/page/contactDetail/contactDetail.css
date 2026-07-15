@@ -1,5 +1,5 @@
 lightning-card {
-    --slds-c-card-body-spacing-inline: var(--slds-g-spacing-var-inline-4);
+    --slds-c-card-body-spacing-inline: var(--slds-g-spacing-var-inline-4, 1rem);
 }
 
 .c-contact-details-grid {

@@ -1,0 +1,61 @@
+<template>
+    <div class="profile-menu" onkeydown={handleKeydown}>
+        <button
+            class="profile-menu__trigger"
+            type="button"
+            aria-haspopup="dialog"
+            aria-expanded={ariaExpanded}
+            aria-label="Open profile menu"
+            title="Profile"
+            onclick={handleTriggerClick}>
+            <lightning-avatar
+                size="medium"
+                src="/images/avatar1.jpg"
+                initials="AG"
+                fallback-icon-name="standard:person_account"
+                alternative-text="Austin Guevara"
+                variant="circle">
+            </lightning-avatar>
+        </button>
+        <div lwc:if={isOpen} class="profile-menu__popover">
+            <ui-popover nubbin="top-right" flush-body>
+                <ul
+                    class="slds-dropdown__list slds-p-vertical_x-small"
+                    role="menu"
+                    onprivateselect={handlePrivateSelect}>
+                    <lightning-menu-subheader label="Design System"></lightning-menu-subheader>
+                    <template for:each={sldsVersionOptions} for:item="option">
+                        <lightning-menu-item
+                            key={option.value}
+                            label={option.label}
+                            value={option.groupedValue}
+                            checked={option.checked}>
+                        </lightning-menu-item>
+                    </template>
+                    <template lwc:if={showColorMode}>
+                        <lightning-menu-divider></lightning-menu-divider>
+                        <lightning-menu-subheader label="Color Mode"></lightning-menu-subheader>
+                        <template for:each={colorModeOptions} for:item="option">
+                            <lightning-menu-item
+                                key={option.value}
+                                label={option.label}
+                                value={option.groupedValue}
+                                checked={option.checked}>
+                            </lightning-menu-item>
+                        </template>
+                    </template>
+                    <lightning-menu-divider></lightning-menu-divider>
+                    <lightning-menu-subheader label="Vertical Nav"></lightning-menu-subheader>
+                    <template for:each={verticalNavOptions} for:item="option">
+                        <lightning-menu-item
+                            key={option.value}
+                            label={option.label}
+                            value={option.groupedValue}
+                            checked={option.checked}>
+                        </lightning-menu-item>
+                    </template>
+                </ul>
+            </ui-popover>
+        </div>
+    </div>
+</template>

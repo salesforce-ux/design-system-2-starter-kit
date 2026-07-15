@@ -1,6 +1,6 @@
 lightning-card {
     display: block;
-    --slds-c-card-body-spacing-inline: var(--slds-g-spacing-var-inline-4);
+    --slds-c-card-body-spacing-inline: var(--slds-g-spacing-var-inline-4, 1rem);
 }
 
 :host {

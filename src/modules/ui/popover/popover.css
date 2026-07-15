@@ -1,0 +1,7 @@
+:host {
+    display: inline-block;
+}
+
+.ui-popover__body_flush {
+    padding: 0;
+}

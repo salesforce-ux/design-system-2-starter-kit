@@ -1,14 +1,39 @@
 :host {
-    display: flex;
-    flex-direction: column;
+    display: block;
     height: 100vh;
     min-height: 100vh;
     overflow: hidden;
     background-color: var(--slds-g-color-surface-2, #f3f3f3);
 }
 
+.app-root {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.app-root_with-vertical-nav {
+    flex-direction: row;
+}
+
+.app-root__vertical-nav {
+    flex-shrink: 0;
+    height: 100%;
+}
+
+.app-root__column {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+}
+
 /* Global shell stays fixed at top and stacks above the body/panel */
-:host > shell-global-shell {
+.app-root__column > shell-global-shell,
+.app-root > shell-global-shell {
     flex-shrink: 0;
     position: relative;
     z-index: 2;
@@ -37,6 +62,7 @@
     min-height: 0;
     min-width: 0;
 }
+
 
 /* Wrapper that fills the layout cell and establishes flex for the scroll area */
 .app-body__scroll-wrapper {
