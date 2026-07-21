@@ -25,7 +25,7 @@ Fix reported issues where possible. If something cannot be fixed, say so briefly
 
 ### Engineering habits
 
-- For UI work, **read `.agent/skills/afv-library/applying-slds/SKILL.md` first**.
+- For ALL UI work, **read `node_modules/@salesforce/afv-skills/skills/design-systems-slds-apply/SKILL.md` first**.
 - **Prefer Lightning Base Components over hand-rolled SLDS markup.** When a `lightning-*` component exists for what you're building, use it instead of reconstructing the `slds-*` blueprint from memory (e.g. `lightning-card` not `slds-card`, `lightning-button` not `slds-button`, `lightning-icon` not `slds-icon`). Only hand-roll a blueprint when no base component covers the case, and say so when you do.
 - Prefer small, single-responsibility LWCs and readable structure.
 - Do not use `!important`.
@@ -41,17 +41,17 @@ Use Lightning Base Component form elements (`lightning-input`, `lightning-combob
 
 ### SLDS Agent Skills
 
-SLDS skills live under **`.agent/skills/`**. The **`afv-library/`** subfolder is synced from `forcedotcom/afv-library` on `npm install` (refresh with `npm run skills:sync`).
+SLDS skills ship in the **`@salesforce/afv-skills`** npm dependency.
 
-- **For UI work** (markup, CSS, layout, icons, LBC vs blueprint), **read and follow `.agent/skills/afv-library/applying-slds/SKILL.md` first**. Do not improvise SLDS from memory when a skill exists. Re-read it when you iterate on presentation.
-- **`uplifting-components-to-slds2`** — SLDS 1→2 / linter-driven uplift only.
-- **`validating-slds`** — audit or scorecard requests only.
+- **For ALL UI work** (markup, CSS, layout, icons, LBC vs blueprint), **read and follow `node_modules/@salesforce/afv-skills/skills/design-systems-slds-apply/SKILL.md` first**. Do not improvise SLDS from memory when a skill exists. Re-read it when you iterate on presentation.
+- **`design-systems-slds2-migrate`** — SLDS 1→2 / linter-driven uplift only.
+- **`design-systems-slds-validate`** — audit or scorecard requests only.
 
 | Skill | `SKILL.md` | When to use |
 |-------|------------|-------------|
-| applying-slds | `.agent/skills/afv-library/applying-slds/SKILL.md` | Default for SLDS-backed UI: blueprints, hooks, utilities, icons, LBC choice. |
-| uplifting-components-to-slds2 | `.agent/skills/afv-library/uplifting-components-to-slds2/SKILL.md` | Migration and fixes from SLDS 1 to 2; linter violations and hook/token replacements. |
-| validating-slds | `.agent/skills/afv-library/validating-slds/SKILL.md` | Compliance audit or scored quality report, not for implementing or fixing UI. |
+| design-systems-slds-apply | `node_modules/@salesforce/afv-skills/skills/design-systems-slds-apply/SKILL.md` | Default for SLDS-backed UI: blueprints, hooks, utilities, icons, LBC choice. |
+| design-systems-slds2-migrate | `node_modules/@salesforce/afv-skills/skills/design-systems-slds2-migrate/SKILL.md` | Migration and fixes from SLDS 1 to 2; linter violations and hook/token replacements. |
+| design-systems-slds-validate | `node_modules/@salesforce/afv-skills/skills/design-systems-slds-validate/SKILL.md` | Compliance audit or scored quality report, not for implementing or fixing UI. |
 | repo-setup | `.agent/skills/repo-setup/SKILL.md` | Set up a GitHub repo: detects host from origin remote, prerequisites, repo creation, initial push. Use when the user mentions saving or backing up their work. |
 | first-time-deploy | `.agent/skills/first-time-deploy/SKILL.md` | Publish to GitHub Pages. Repeat deploys: just `npm run deploy`. First time: runs repo-setup, then deploys and configures Pages. Use when the user asks about deploying or sharing a link with a PM, stakeholder, etc. |
 

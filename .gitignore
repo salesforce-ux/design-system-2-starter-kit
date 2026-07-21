@@ -16,9 +16,6 @@ src/build/generated/
 # Claude (local-only)
 .claude/settings.local.json
 
-# Agent skills synced from afv-library
-.agent/skills/afv-library/
-
 # OS
 .DS_Store
 

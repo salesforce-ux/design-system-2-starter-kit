@@ -63,8 +63,7 @@ design-system-2-starter-kit/
 │   ├── router.js                  # Route definitions and navigation
 │   └── index.js                   # App entry point
 ├── scripts/
-│   ├── prebuild-icons.mjs         # Icon codegen (run via npm scripts)
-│   └── sync-afv-skills.mjs        # Copies afv-library skills → .agent/skills/afv-library/
+│   └── prebuild-icons.mjs         # Icon codegen (run via npm scripts)
 ├── index.html
 ├── vite.config.js
 └── package.json
@@ -195,7 +194,7 @@ This project includes an `mcp.json` that automatically configures the [Salesforc
 
 ### Agent skills (layout)
 
-- **`.agent/skills/afv-library/`:** Selected skills from [`forcedotcom/afv-library`](https://github.com/forcedotcom/afv-library) (`develop`) are copied here on **`npm install`** (gitignored). Refresh with **`npm run skills:sync`**.
+- **`@salesforce/afv-skills`:** SLDS skills ship in this npm dependency (from the [`forcedotcom/sf-skills`](https://github.com/forcedotcom/sf-skills) repo).
 - **`.agent/skills/<skill-id>/`:** Skills that ship with this project.
 
 ## References
