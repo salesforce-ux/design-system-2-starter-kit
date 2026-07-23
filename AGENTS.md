@@ -50,6 +50,7 @@ SLDS skills ship in the **`@salesforce/afv-skills`** npm dependency.
 | Skill | `SKILL.md` | When to use |
 |-------|------------|-------------|
 | design-systems-slds-apply | `node_modules/@salesforce/afv-skills/skills/design-systems-slds-apply/SKILL.md` | Default for SLDS-backed UI: blueprints, hooks, utilities, icons, LBC choice. |
+| experience-lwc-generate | `node_modules/@salesforce/afv-skills/skills/experience-lwc-generate/SKILL.md` | As-needed reference when stuck on LWC framework behavior. Not part of routine UI work. See `references/` (esp. `lwc-best-practices.md`, `template-anti-patterns.md`). |
 | design-systems-slds2-migrate | `node_modules/@salesforce/afv-skills/skills/design-systems-slds2-migrate/SKILL.md` | Migration and fixes from SLDS 1 to 2; linter violations and hook/token replacements. |
 | design-systems-slds-validate | `node_modules/@salesforce/afv-skills/skills/design-systems-slds-validate/SKILL.md` | Compliance audit or scored quality report, not for implementing or fixing UI. |
 | repo-setup | `.agent/skills/repo-setup/SKILL.md` | Set up a GitHub repo: detects host from origin remote, prerequisites, repo creation, initial push. Use when the user mentions saving or backing up their work. |
@@ -57,7 +58,7 @@ SLDS skills ship in the **`@salesforce/afv-skills`** npm dependency.
 
 ### LWC troubleshooting
 
-Use the **Salesforce DX MCP** selectively ONLY for **LWC framework and Salesforce-platform** issues (`@api`, `@wire`, lifecycle, events, org-only behavior).
+If you hit unexpected LWC framework behavior (`@api`, `@wire`, lifecycle, events, template expressions), consult the **`experience-lwc-generate`** skill's `references/` files.
 
 ### Deployment (GitHub Pages)
 
