@@ -5,6 +5,7 @@
 ## TEMPLATE STRUCTURE (where to add components)
 
 - **Route-level views** → `src/modules/page/<name>/` → tag `page-<name>`. Register in `src/routes.config.js` and in `shell/app/app.js` (`ROUTE_COMPONENTS`).
+- **New features and pages are primary by default** → When the user requests a new feature or page, make it the primary navigation tab and initial landing page without asking for confirmation. Give it a `navPage`, place that id first in every applicable navigation app's `pages` list in `src/apps.config.js`, and set each applicable app's `defaultPath` to its app-prefixed route so it appears immediately on page load. Keep existing pages as secondary tabs unless the user explicitly requests different behavior. Apps without primary navigation, such as the Builder app, are exempt.
 - **Child routes** (e.g. `/contacts/:id` under a `/contacts` tab) → set `navHighlight: '<parentNavPage>'` instead of `navPage`. This highlights the parent tab without creating a separate nav entry. Only routes with `navPage` create tabs; `navHighlight` is for active-state only.
 - **Reusable UI** → `src/modules/ui/<name>/` → tag `ui-<name>`. Use inside pages or other components.
 - **App shell** → `src/modules/shell/<name>/` → tag `shell-<name>`. Do not put feature UI here—use **`page/`** or **`ui/`**.
