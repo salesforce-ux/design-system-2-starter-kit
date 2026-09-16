@@ -1,3 +1,4 @@
+import { shouldHandleLink } from '../../../router';
 import { LightningElement, api } from 'lwc';
 
 export default class VerticalNav extends LightningElement {
@@ -16,6 +17,7 @@ export default class VerticalNav extends LightningElement {
     }
 
     handleClick(event) {
+        if (!shouldHandleLink(event)) return;
         event.preventDefault();
         const appId = event.currentTarget.dataset.app;
         this.dispatchEvent(

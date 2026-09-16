@@ -1,3 +1,4 @@
+import { shouldHandleLink } from '../../../router';
 import { LightningElement, api } from 'lwc';
 
 const VARIANT_CONSOLE = 'console';
@@ -73,7 +74,7 @@ export default class GlobalNavigation extends LightningElement {
     /** Currently selected page (Console object switcher trigger label). */
     get currentPageLabel() {
         const current = (this.pagesInCurrentApp || []).find((p) => p.isCurrent);
-        return current?.label ?? '';
+        return current?.label ?? 'Page Not Found';
     }
 
     /** Nav items with isActive and tabClass derived from currentPage (Standard variant). */
@@ -91,6 +92,7 @@ export default class GlobalNavigation extends LightningElement {
     }
 
     handleNavItemClick(event) {
+        if (!shouldHandleLink(event)) return;
         event.preventDefault();
         const page = event.currentTarget.dataset.page;
         this._dispatchNavigate(page);
@@ -110,6 +112,7 @@ export default class GlobalNavigation extends LightningElement {
     }
 
     handleWaffleMenuItemClick(event) {
+        if (!shouldHandleLink(event)) return;
         event.preventDefault();
         this.isWaffleMenuOpen = false;
         const appId = event.currentTarget.dataset.value;

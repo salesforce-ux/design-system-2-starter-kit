@@ -24,48 +24,23 @@ const HASH_MODE = import.meta.env.VITE_ROUTER_MODE === 'hash';
 
 const listeners = new Set();
 
-/**
- * Module-level "current app" used by linkHref/navigate when callers pass a
- * logical (un-prefixed) path. shell-app keeps this in sync with the active
- * route on every navigation via setCurrentAppForLinks().
- */
-let _currentAppId = getPersistedAppId();
-
-export function setCurrentAppForLinks(appId) {
-  if (appId && getAppById(appId)) {
-    _currentAppId = appId;
-  }
-}
-
 function getActiveAppForBuild() {
-  return getAppById(_currentAppId) || getAppById(DEFAULT_APP_ID);
+  return getAppForPath(getLogicalPath().split('?')[0]) || getAppById(DEFAULT_APP_ID);
 }
 
 function normalizeLogicalPath(path) {
-  let normalized =
-    !path || path === '/' ? '/' : path.startsWith('/') ? path : `/${path}`;
-  if (normalized.length > 1 && normalized.endsWith('/')) {
-    normalized = normalized.slice(0, -1);
-  }
-  return normalized;
+  const [pathname, ...query] = path.split('?');
+  const prefixed = pathname.startsWith('/') ? pathname : '/' + pathname;
+  const normalized = prefixed.length > 1 ? prefixed.replace(/\/$/, '') : prefixed;
+  return normalized + (query.length ? '?' + query.join('?') : '');
 }
 
 /** Logical path for route matching (always starts with /, no trailing slash except root). */
 function getLogicalPath() {
   if (!HASH_MODE) {
-    return normalizeLogicalPath(window.location.pathname);
+    return normalizeLogicalPath(window.location.pathname) + window.location.search;
   }
-  const locationHash = window.location.hash;
-  if (!locationHash || locationHash === '#' || locationHash === '#/') {
-    return '/';
-  }
-  if (locationHash.startsWith('#/')) {
-    const afterHashSlash = locationHash.slice(2);
-    const fragmentBeforeQuery = afterHashSlash.split('?')[0];
-    const rawLogical = fragmentBeforeQuery ? `/${fragmentBeforeQuery}` : '/';
-    return normalizeLogicalPath(rawLogical);
-  }
-  return '/';
+  return normalizeLogicalPath(window.location.hash.slice(1) || '/');
 }
 
 function hashUrlFromLogicalPath(logicalPath) {
@@ -91,8 +66,11 @@ function writeUrl(logicalPath, replace = false) {
  * @param {string} [appId] optional app id to scope the link (defaults to active)
  */
 export function linkHref(logicalPath, appId) {
+  if (typeof logicalPath !== 'string' || logicalPath.startsWith('//') || /^[a-z][a-z\d+.-]*:/i.test(logicalPath) || logicalPath.includes('\\')) {
+    throw new Error('Expected an internal route logicalPath');
+  }
   const path = normalizeLogicalPath(logicalPath);
-  const existingApp = getAppForPath(path);
+  const existingApp = getAppForPath(path.split('?')[0]);
   const finalPath = existingApp
     ? path
     : withAppPrefix(
@@ -106,8 +84,10 @@ export function linkHref(logicalPath, appId) {
 }
 
 function matchRoute(path) {
+  path = normalizeLogicalPath(path.split('?')[0]);
   const app = getAppForPath(path);
-  if (!app) return null;
+  const missing = { app: app?.id ?? null, params: {}, component: null, title: 'Page Not Found', notFound: true };
+  if (!app) return missing;
   const subPath = stripAppPrefix(path, app);
 
   const candidates = [
@@ -133,7 +113,7 @@ function matchRoute(path) {
     }
   }
 
-  return null;
+  return missing;
 }
 
 function getTitleForRoute(route) {
@@ -143,45 +123,43 @@ function getTitleForRoute(route) {
     : route.title;
 }
 
-function notify() {
-  const path = getLogicalPath();
-  const app = getAppForPath(path);
-
-  // No app prefix on the URL (bare "/" or anything else): redirect into the
-  // last-used app and re-evaluate.
-  if (!app) {
-    const target = getActiveAppForBuild().defaultPath;
-    if (!getAppForPath(target)) {
-      console.error(
-        `[router] defaultPath "${target}" does not match any app prefix. Check apps.config.js.`
-      );
-      return;
-    }
-    writeUrl(target, /* replace */ true);
-    return notify();
+function resolveCurrentRoute() {
+  // Only the bare root uses the saved preference. Unknown URLs remain visible.
+  const current = getLogicalPath();
+  if (current.split('?')[0] === '/') {
+    const app = getAppById(getPersistedAppId()) || getAppById(DEFAULT_APP_ID);
+    writeUrl(app.defaultPath + current.slice(1), true);
   }
-
-  // Keep the module-level cache in sync with the URL so subsequent linkHref
-  // calls produced before shell-app's subscribe handler runs use the right
-  // prefix.
-  _currentAppId = app.id;
-
-  const route = matchRoute(path);
+  const route = matchRoute(getLogicalPath());
   document.title = getTitleForRoute(route);
+  return route;
+}
+
+function notify() {
+  const route = resolveCurrentRoute();
   listeners.forEach((listener) => listener(route));
 }
 
-export function navigate(path) {
+export function navigate(path, { replace = false } = {}) {
+  if (typeof path !== 'string' || path.startsWith('//') || /^[a-z][a-z\d+.-]*:/i.test(path) || path.includes('\\')) {
+    throw new Error('Expected an internal route path');
+  }
   const normalized = normalizeLogicalPath(path);
-  const existingApp = getAppForPath(normalized);
+  const existingApp = getAppForPath(normalized.split('?')[0]);
   const logical = existingApp
     ? normalized
     : withAppPrefix(normalized, getActiveAppForBuild());
-  if (logical === getLogicalPath()) {
-    return;
-  }
-  writeUrl(logical);
+  if (logical === getLogicalPath()) return;
+  writeUrl(logical, replace);
   notify();
+}
+
+/** Leave modified clicks, downloads and other browsing contexts to the browser. */
+export function shouldHandleLink(event) {
+  const anchor = event.currentTarget;
+  return !event.defaultPrevented && event.button === 0 &&
+    !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey &&
+    (!anchor?.target || anchor.target === '_self') && !anchor?.hasAttribute?.('download');
 }
 
 export function getCurrentRoute() {
@@ -190,15 +168,7 @@ export function getCurrentRoute() {
 
 export function subscribe(callback) {
   listeners.add(callback);
-  // Mirror notify()'s redirect-on-no-prefix behavior on first subscribe so a
-  // direct hit on "/" lands on a real app URL before any listener runs.
-  const initialPath = getLogicalPath();
-  if (!getAppForPath(initialPath)) {
-    writeUrl(getActiveAppForBuild().defaultPath, /* replace */ true);
-  }
-  const route = matchRoute(getLogicalPath());
-  document.title = getTitleForRoute(route);
-  if (route?.app) _currentAppId = route.app;
+  const route = resolveCurrentRoute();
   callback(route);
 
   return () => listeners.delete(callback);

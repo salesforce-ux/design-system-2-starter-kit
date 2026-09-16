@@ -11,7 +11,8 @@
     "build:gh-pages": "node scripts/prebuild-icons.mjs && vite build --mode gh-pages",
     "preview": "vite preview",
     "deploy": "npm run build:gh-pages && gh-pages -d dist --nojekyll",
-    "clean": "rm -rf dist .vite node_modules"
+    "clean": "rm -rf dist .vite node_modules",
+    "test": "node --experimental-vm-modules --test tests/*.test.js"
   },
   "license": "SEE LICENSE IN LICENSE.txt",
   "type": "module",
